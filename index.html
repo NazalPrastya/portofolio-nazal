@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/dist/output.css" rel="stylesheet" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+
+    <!-- Icon -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- css -->
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-background">
+    <!-- Start Jumbotron -->
+    <section id="home" class="bg-background h-screen relative">
+      <div class="flex flex-wrap justify-between container pt-16">
+        <div class="left w-full lg:w-1/3 lg:pt-14">
+          <h1 class="font-medium lg:text-2xl">Hello I'M Nazal Gust Prastya</h1>
+          <p class="font-bold mb-10 mt-5 text-xl lg:text-6xl">Junior <span class="text-primary">Programmer & Student</span></p>
+          <a href="#about" class="px-5 py-3 border-2 border-primary text-xl font-semibold text-primary rounded-tr-3xl rounded-bl-3xl hover:border-secondary hover:text-white hover:bg-secondary duration-200 inline-block">About Me</a>
+        </div>
+        <div class="right w-full lg:w-2/3 lg:relative">
+          <img src="assets/image/char.png" alt="me" class="w-max lg:w-auto lg:h-screen lg:absolute xl:-right-0 2xl:-right-40" />
+        </div>
+      </div>
+      <div class="wave absolute w-full h-auto bottom-0 lg:-bottom-20">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#1f252d"
+            fill-opacity="1"
+            d="M0,96L80,90.7C160,85,320,75,480,85.3C640,96,800,128,960,149.3C1120,171,1280,181,1360,186.7L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
+    </section>
+    <!-- End Jumbrotron -->
+
+    <!-- Start About Me -->
+    <section id="about" class="pt-10 md:py-24 bg-background2">
+      <div class="container">
+        <div class="flex flex-wrap md:flex-row-reverse justify-center">
+          <div class="w-full lg:w-1/2">
+            <h2 class="font-bold text-2xl md:text-3xl lg:text-4xl">About <span class="text-primary">Me</span></h2>
+            <p class="font-semibold text-lg mt-1 md:mt-5">My Name <span class="text-primary">Nazal Gusti Prastya</span></p>
+            <p class="font-extralight text-justify max-w-lg mt-2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quaerat qui et officia eius iure a fugit. Earum quaerat et, voluptates, dolore facilis placeat cum error quisquam, recusandae voluptatem quos.
+            </p>
+          </div>
+          <div class="w-full lg:w-1/2 flex justify-center">
+            <img src="assets/image/char2.png" class="md:w-[60%] md:relative right-10" alt="char2" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Me -->
+
+    <!-- Start Skills -->
+    <section id="skills" class="py-10 md:py-24">
+      <div class="container">
+        <h3 class="font-bold text-2xl md:text-3xl text-center"><span class="text-primary">My</span> Skills</h3>
+        <div class="flex flex-wrap justify-center gap-5 mt-5">
+          <div class="w-full md:w-1/4 lg:1/5 p-5 rounded-md bg-background2 hover:bg-primary group duration-300">
+            <i class="bx bx-layer text-5xl text-primary group-hover:text-white group-hover:text-6xl duration-300"></i>
+            <p class="font-semibold text-lg">Poster Design</p>
+            <p class="text-sm font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quam dolore dolor voluptates aliquam corrupti.</p>
+          </div>
+
+          <div class="w-full md:w-1/4 lg:1/5 p-5 rounded-md bg-background2 hover:bg-primary group duration-300">
+            <i class="bx bxs-layout text-5xl text-primary group-hover:text-white group-hover:text-6xl duration-300"></i>
+            <p class="font-semibold text-lg">Web Design</p>
+            <p class="text-sm font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quam dolore dolor voluptates aliquam corrupti.</p>
+          </div>
+
+          <div class="w-full md:w-1/4 lg:1/5 p-5 rounded-md bg-background2 hover:bg-primary group duration-300">
+            <i class="bx bx-devices text-5xl text-primary group-hover:text-white group-hover:text-6xl duration-300"></i>
+            <p class="font-semibold text-lg">Front End</p>
+            <p class="text-sm font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quam dolore dolor voluptates aliquam corrupti.</p>
+          </div>
+
+          <div class="w-full md:w-1/4 lg:1/5 p-5 rounded-md bg-background2 hover:bg-primary group duration-300">
+            <i class="bx bx-code-alt text-5xl text-primary group-hover:text-white group-hover:text-6xl duration-300"></i>
+            <p class="font-semibold text-lg">Back End</p>
+            <p class="text-sm font-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quam dolore dolor voluptates aliquam corrupti.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Skills -->
+
+    <!-- Start Project -->
+    <section id="project" class="py-10 md:py-24">
+      <div class="container">
+        <h4 class="font-bold text-2xl md:text-3xl text-center">My <span class="text-primary">Project</span></h4>
+        <div class="flex flex-wrap">
+          <div class="w-full py-3 rounded-md shadow-lg">
+            <a href="https://nazal.rpl2azzy.com/"><img src="/assets/portofolio/SIK.png" alt="sistem-informasi-kantin" class="rounded-md" /></a>
+            <article class="px-2">
+              <p class="mb-3 font-medium mt-2">Sistem Informasi Kantin</p>
+              <div class="flex">
+                <img src="assets/logo/laravel-2.svg" width="20" class="fill-slate-500" alt="" />
+              </div>
+              <a href="https://nazal.rpl2azzy.com/" class="px-5 py-2 bg-primary hover:bg-secondary rounded-md duration-300">Lihat</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Project -->
+
+    <!-- My Script -->
+  </body>
+</html>
