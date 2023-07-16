@@ -1086,6 +1086,26 @@ input:checked + .toggle-bg {
   top: 0.75rem;
 }
 
+.-top-0 {
+  top: -0px;
+}
+
+.-top-5 {
+  top: -1.25rem;
+}
+
+.-right-5 {
+  right: -1.25rem;
+}
+
+.-top-2 {
+  top: -0.5rem;
+}
+
+.-left-5 {
+  left: -1.25rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -1121,6 +1141,11 @@ input:checked + .toggle-bg {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .mb-1 {
@@ -1308,6 +1333,10 @@ input:checked + .toggle-bg {
   transform-origin: 0;
 }
 
+.origin-center {
+  transform-origin: center;
+}
+
 .-translate-x-full {
   --tw-translate-x: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1425,6 +1454,10 @@ input:checked + .toggle-bg {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .items-start {
@@ -1631,6 +1664,26 @@ input:checked + .toggle-bg {
 .bg-emerald-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(167 243 208 / var(--tw-bg-opacity));
+}
+
+.bg-emerald-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 95 70 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 233 106 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 160 8 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 202 21 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -2280,6 +2333,10 @@ input:checked + .toggle-bg {
     top: 0px;
   }
 
+  .md\:-top-5 {
+    top: -1.25rem;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -2310,6 +2367,10 @@ input:checked + .toggle-bg {
 
   .md\:h-full {
     height: 100%;
+  }
+
+  .md\:h-screen {
+    height: 100vh;
   }
 
   .md\:w-1\/2 {
@@ -2384,6 +2445,16 @@ input:checked + .toggle-bg {
   .md\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+
+  .md\:py-40 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .md\:py-36 {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
   }
 
   .md\:pb-0 {
