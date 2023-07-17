@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .navbar-fixed {
-  @apply bg-white bg-opacity-50;
+  @apply bg-slate-700 bg-opacity-50;
   backdrop-filter: blur(5px);
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
