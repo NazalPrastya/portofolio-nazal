@@ -35,3 +35,18 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
     }
   });
 });
+
+window.onload = function () {
+  var downloadBtn = document.getElementById('downloadBtn');
+  downloadBtn.addEventListener('click', downloadImage);
+};
+
+function downloadImage() {
+  var url = 'assets/portofolio/portofolio.png';
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'CV-Nazal.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}

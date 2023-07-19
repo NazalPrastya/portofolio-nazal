@@ -2023,6 +2023,10 @@ input:checked + .toggle-bg {
   transition-duration: 300ms;
 }
 
+.duration-100 {
+  transition-duration: 100ms;
+}
+
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
