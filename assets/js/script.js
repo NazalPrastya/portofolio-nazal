@@ -50,3 +50,32 @@ function downloadImage() {
   a.click();
   document.body.removeChild(a);
 }
+
+// send email
+function SendMail() {
+  // Ambil nomor WhatsApp dan pesan dari form
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  // Basic validation for required fields
+  if (!name || !email || !message) {
+    alert('Please fill in all required fields');
+    return;
+  }
+
+  var params = {
+    from_name: name,
+    email: email,
+    tanggal: new Date().toLocaleDateString(),
+    message: message,
+  };
+  emailjs
+    .send('service_supqeev', 'template_u3fanhj', params)
+    .then(function (res) {
+      alert('Success ' + res.status);
+    })
+    .catch(function (err) {
+      alert('An error occurred while sending the email. Please try again later.');
+    });
+}
