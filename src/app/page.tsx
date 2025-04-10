@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen bg-background">
+    <div className="relative flex min-h-screen ">
       <Navigation />
       <main className="flex-1 px-4 sm:px-8 md:px-16 lg:px-24">
         <section id="home" className="min-h-screen">
