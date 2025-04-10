@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
+import CircularText from "@/components/CircularText/CircularText";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -40,7 +41,12 @@ export default function RootLayout({
                 )}
               />
             </div>
-
+            <CircularText
+              text="CONTACT CONTACT CONTACT "
+              onHover="speedUp"
+              spinDuration={20}
+              className="fixed z-1 bottom-2 right-4"
+            />
             {/* Main Content */}
             <div className="relative z-10">{children}</div>
 

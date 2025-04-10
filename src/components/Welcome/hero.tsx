@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -77,11 +77,17 @@ export default function Hero() {
                 Hello, I&#39;m{" "}
                 <span className="text-primary">Nazal Gusti Prastya</span>
               </h1>
+              <h2 className="bg-secondary w-fit pr-3 text-2xl italic font-bold tracking-tighter sm:text-3xl md:text-4xl text-secondary-foreground">
+                Web Developer
+              </h2>
+
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                I&#39;m a passionate designer and developer creating beautiful
-                digital experiences. I specialize in building modern, responsive
-                websites and applications.
+                Hi, I am a web developer who enjoys delivering creative and
+                high-quality digital solutions to meet your business needs.
               </p>
+              <span className="inline text-sm">
+                <MapPin className="inline" /> Based in Bogor, Indonesia
+              </span>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button size="lg">Get in Touch</Button>
