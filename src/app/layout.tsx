@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 import CircularText from "@/components/CircularText/CircularText";
+import Footer from "@/sections/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -48,7 +49,10 @@ export default function RootLayout({
               className="fixed z-20 bottom-2 right-4"
             />
             {/* Main Content */}
-            <div className="relative z-10">{children}</div>
+            <div className="relative z-10">
+              {children}
+              <Footer />
+            </div>
 
             <Toaster position="top-right" />
           </div>
