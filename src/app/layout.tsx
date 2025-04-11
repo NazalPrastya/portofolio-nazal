@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
-import CircularText from "@/components/CircularText/CircularText";
+// import CircularText from "@/components/CircularText/CircularText";
 import Footer from "@/sections/footer";
 const inter = Inter({ subsets: ["latin"] });
 
