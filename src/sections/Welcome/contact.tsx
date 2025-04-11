@@ -1,6 +1,6 @@
 "use client";
 // Contact.jsx
-import { Signature, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Signature, Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { useState } from "react";
 
 // Import shadcn components
@@ -61,10 +61,7 @@ export default function Contact() {
             <div className="relative flex justify-center mt-6 mb-6">
               {/* Profile Image with Avatar component - centered */}
               <Avatar className="w-40 h-40 border-4 border-background">
-                <AvatarImage
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Profile Photo"
-                />
+                <AvatarImage src="/assets/me-kotak.jpg" alt="Profile Photo" />
                 <AvatarFallback>ME</AvatarFallback>
               </Avatar>
 
@@ -83,35 +80,43 @@ export default function Contact() {
             {/* Description */}
             <CardContent>
               <p className="text-muted-foreground">
-                Passionate developer with expertise in React, Next.js, and
-                modern web technologies. I love building intuitive and
-                performant web applications that solve real problems.
+                My inbox is always open, if you have a project to work on
+                together or just to say hello. Feel free to contact me and I
+                will get back to you.
               </p>
             </CardContent>
 
             {/* Social Media Links */}
             <CardFooter className="flex gap-3 ">
               <a
-                href="#"
+                href="https://github.com/NazalPrastya"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/nazal-gusti-prastya-8a890a249/"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/nazalprastya/"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Twitter className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="mailto:your@email.com"
+                href="mailto:nazalprastya@gmail.com"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Mail className="w-5 h-5" />
               </a>

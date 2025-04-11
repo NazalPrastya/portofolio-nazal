@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, MapPin, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -25,33 +25,33 @@ export default function Hero() {
     <div className="flex flex-col justify-center min-h-screen relative">
       <div className="absolute top-0 right-0 p-4 flex space-x-4">
         <Link
-          href="https://github.com"
+          href="https://github.com/NazalPrastya"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="cursor-pointer">
             <Github className="h-5 w-5" />
             <span className="sr-only">GitHub</span>
           </Button>
         </Link>
         <Link
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/nazal-gusti-prastya-8a890a249/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="cursor-pointer">
             <Linkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </Button>
         </Link>
         <Link
-          href="https://twitter.com"
+          href="https://www.instagram.com/nazalprastya/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="ghost" size="icon">
-            <Twitter className="h-5 w-5" />
-            <span className="sr-only">Twitter</span>
+          <Button variant="ghost" size="icon" className="cursor-pointer">
+            <Instagram className="h-5 w-5" />
+            <span className="sr-only">Instagram</span>
           </Button>
         </Link>
       </div>
@@ -62,10 +62,10 @@ export default function Hero() {
               {/* Image with clip path */}
               <div className="absolute inset-0 overflow-hidden rounded-full border-4 border-background shadow-xl">
                 <Image
-                  src="https://kzmr04navfpmxsjpyipg.lite.vusercontent.net/placeholder.svg?height=600&width=480"
+                  src="/assets/me.jpg"
                   alt="Profile photo"
                   fill
-                  className="object-cover"
+                  className="object-cover -hue-rotate-15"
                   priority
                 />
               </div>
@@ -88,12 +88,6 @@ export default function Hero() {
               <span className="inline text-sm">
                 <MapPin className="inline" /> Based in Bogor, Indonesia
               </span>
-            </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg">Get in Touch</Button>
-              <Button variant="outline" size="lg">
-                View My Work
-              </Button>
             </div>
           </div>
         </div>

@@ -1,50 +1,55 @@
-import { Facebook, Instagram, Twitter, Github } from "lucide-react";
-
+import { Instagram, Github, Linkedin, Mail } from "lucide-react";
+import { FaPinterest } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="relative flex flex-1 border-t py-6 md:py-8">
       <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
         <div className="text-center md:text-left md:pl-20">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+            &copy; {new Date().getFullYear()} Nazal Gusti Prastya. All rights
+            reserved.
           </p>
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="https://twitter.com"
+            href="https://github.com/NazalPrastya"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Twitter className="h-5 w-5" />
-            <span className="sr-only">Twitter</span>
+            <Github className="w-5 h-5" />
           </a>
           <a
-            href="https://facebook.com"
+            href="https://www.linkedin.com/in/nazal-gusti-prastya-8a890a249/"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Facebook className="h-5 w-5" />
-            <span className="sr-only">Facebook</span>
+            <Linkedin className="w-5 h-5" />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/nazalprastya/"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Instagram className="h-5 w-5" />
-            <span className="sr-only">Instagram</span>
+            <Instagram className="w-5 h-5" />
           </a>
           <a
-            href="https://github.com"
+            href="mailto:nazalprastya@gmail.com"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Github className="h-5 w-5" />
-            <span className="sr-only">Github</span>
+            <Mail className="w-5 h-5" />
+          </a>
+          <a
+            href="https://id.pinterest.com/nazalprastya/"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaPinterest className="w-5 h-5" />
           </a>
         </div>
       </div>
