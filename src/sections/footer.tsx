@@ -16,6 +16,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="github nazal prastya"
           >
             <Github className="w-5 h-5" />
           </a>
@@ -24,6 +25,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="linkedin nazal prastya"
           >
             <Linkedin className="w-5 h-5" />
           </a>
@@ -32,6 +34,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="instagram nazal prastya"
           >
             <Instagram className="w-5 h-5" />
           </a>
@@ -40,6 +43,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="email nazal prastya"
           >
             <Mail className="w-5 h-5" />
           </a>
@@ -48,6 +52,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="pinterest nazal prastya"
           >
             <FaPinterest className="w-5 h-5" />
           </a>

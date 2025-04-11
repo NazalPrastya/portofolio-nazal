@@ -132,6 +132,7 @@ export default function About() {
       <div className="flex flex-col md:flex-row justify-end mt-5 gap-x-3">
         <div className="w-full md:w-[25%] flex justify-center items-center bg-transparent overflow-hidden">
           <iframe
+            title="Spotify"
             src="https://open.spotify.com/embed/track/1wo3UYTeizJHkwYIuLuBPF?utm_source=generator&theme=0"
             width="100%"
             height="240"
