@@ -28,7 +28,7 @@ export default function Experience() {
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-4">
                 <Avatar className="w-12 h-12 bg-blue-100">
-                  <AvatarImage src="/assets/experience/bnpt.png" />
+                  <AvatarImage src="/assets/experience/bnpt.png" alt="bnpt" />
                   <AvatarFallback>BNPT</AvatarFallback>
                 </Avatar>
                 <div>
@@ -49,7 +49,10 @@ export default function Experience() {
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-4">
                 <Avatar className="w-12 h-12 bg-white">
-                  <AvatarImage src="/assets/experience/kemenkop.png" />
+                  <AvatarImage
+                    src="/assets/experience/kemenkop.png"
+                    alt="kemenkop"
+                  />
                   <AvatarFallback>DC</AvatarFallback>
                 </Avatar>
                 <div>
@@ -72,7 +75,10 @@ export default function Experience() {
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-4">
                 <Avatar className="w-12 h-12 bg-blue-500">
-                  <AvatarImage src="/placeholder.svg?height=48&width=48" />
+                  <AvatarImage
+                    src="/placeholder.svg?height=48&width=48"
+                    alt="DS"
+                  />
                   <AvatarFallback>DS</AvatarFallback>
                 </Avatar>
                 <div>
