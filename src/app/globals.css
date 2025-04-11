@@ -43,6 +43,29 @@
   --radius-xl: calc(var(--radius) + 4px);
   --container-padding: 36px;
   --container-center: true;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+.container {
+  padding: 36px;
+  margin: 0 auto;
 }
 
 :root {

@@ -45,7 +45,7 @@ export default function RootLayout({
               text="CONTACT CONTACT CONTACT "
               onHover="speedUp"
               spinDuration={20}
-              className="fixed z-1 bottom-2 right-4"
+              className="fixed z-20 bottom-2 right-4"
             />
             {/* Main Content */}
             <div className="relative z-10">{children}</div>
