@@ -19,16 +19,6 @@ const techStacks = [
     color: "text-cyan-500",
   },
   {
-    name: "Node.js",
-    icon: "devicon-nodejs-plain",
-    color: "text-green-500",
-  },
-  {
-    name: "Python",
-    icon: "devicon-python-plain",
-    color: "text-yellow-500",
-  },
-  {
     name: "TypeScript",
     icon: "devicon-typescript-plain",
     color: "text-blue-600",
@@ -39,14 +29,49 @@ const techStacks = [
     color: "text-blue-400",
   },
   {
+    name: "JavaScript",
+    icon: "devicon-javascript-plain",
+    color: "text-yellow-500",
+  },
+  {
     name: "Next.js",
     icon: "devicon-nextjs-plain",
     color: "text-gray-800 dark:text-white",
   },
   {
-    name: "Docker",
-    icon: "devicon-docker-plain",
+    name: "PHP",
+    icon: "devicon-php-plain",
     color: "text-blue-500",
+  },
+  {
+    name: "Composer",
+    icon: "devicon-composer-plain",
+    color: "text-amber-700",
+  },
+  {
+    name: "Github",
+    icon: "devicon-github-plain",
+    color: "text-black",
+  },
+  {
+    name: "MaterialUI",
+    icon: "devicon-materialui-plain",
+    color: "text-blue-600",
+  },
+  {
+    name: "Nginx",
+    icon: "devicon-nginx-plain",
+    color: "text-green-600",
+  },
+  {
+    name: "PostgreSQL",
+    icon: "devicon-postgresql-plain",
+    color: "text-blue-700",
+  },
+  {
+    name: "ViteJS",
+    icon: "devicon-vitejs-plain",
+    color: "text-yellow-700",
   },
 ];
 
@@ -58,7 +83,7 @@ export default function About() {
     <div className="w-full container">
       <div className="mb-12 ">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          <Sparkles className="inline w-10 h-10" />
+          <Sparkles className="inline w-9 h-9" />
           About Me
         </h1>
         <p className="mt-5 text-muted-foreground text-justify leading-8 md:text-xl">
