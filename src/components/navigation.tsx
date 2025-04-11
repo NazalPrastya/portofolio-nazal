@@ -69,11 +69,13 @@ export default function Navigation() {
       "footer",
     ];
 
-    elementsToTransition.forEach((tag) => {
+    elementsToTransition.forEach((tag: string) => {
       const elements = document.getElementsByTagName(tag);
+
       for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.add("transition-colors");
-        elements[i].style.transition =
+        const el = elements[i] as HTMLElement; // pastikan elemen bertipe HTMLElement
+        el.classList.add("transition-colors");
+        el.style.transition =
           "background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease";
       }
     });
@@ -86,8 +88,9 @@ export default function Navigation() {
       elementsToTransition.forEach((tag) => {
         const elements = document.getElementsByTagName(tag);
         for (let i = 0; i < elements.length; i++) {
-          elements[i].classList.remove("transition-colors");
-          elements[i].style.transition = "";
+          const el = elements[i] as HTMLElement; // pastikan elemen bertipe HTMLElement
+          el.classList.remove("transition-colors");
+          el.style.transition = "";
         }
       });
     };
