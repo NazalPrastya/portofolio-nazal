@@ -1,3 +1,4 @@
+import GitHubContributions from "@/components/github/GithubContributions";
 import { Marquee } from "@/components/magicui/marquee";
 import { TechCard } from "@/components/markquee-skills";
 import { Sparkles } from "lucide-react";
@@ -83,7 +84,7 @@ export default function About() {
     <div className="w-full container">
       <div className="mb-12 ">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          <Sparkles className="inline w-9 h-9" />
+          <Sparkles className="inline w-9 h-9  text-primary" />
           About Me
         </h1>
         <p className="mt-5 text-muted-foreground text-justify leading-8 md:text-xl">
@@ -125,6 +126,22 @@ export default function About() {
               ))}
             </Marquee>
           </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row justify-end mt-5 gap-x-3">
+        <div className="w-full md:w-[25%] flex justify-center items-center bg-transparent overflow-hidden">
+          <iframe
+            src="https://open.spotify.com/embed/track/1wo3UYTeizJHkwYIuLuBPF?utm_source=generator&theme=0"
+            width="100%"
+            height="240"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style={{ backgroundColor: "transparent" }}
+          ></iframe>
+        </div>
+        <div className="w-full md:w-[73%]">
+          <GitHubContributions username="NazalPrastya" />
         </div>
       </div>
     </div>
