@@ -1,3 +1,5 @@
+import ListProject from "@/sections/Project/ListProject";
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,8 +12,8 @@ export default function Page() {
   return (
     <div className="relative flex min-h-screen overflow-x-hidden">
       <main className="flex-1 w-full overflow-x-hidden px-4 sm:px-8 md:px-16 lg:px-24">
-        <section id="home" className="min-h-screen w-full">
-          Projectsss
+        <section id="projects" className="min-h-screen w-full">
+          <ListProject />
         </section>
       </main>
     </div>
