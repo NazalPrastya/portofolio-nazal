@@ -15,9 +15,7 @@ export default function Experience() {
             Experience
           </h1>
           <p className="text-muted-foreground text-lg text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum harum
-            eius dolore veritatis ducimus omnis eveniet debitis perferendis
-            accusamus ex?
+            I have worked in several companies as a professional web developer.
           </p>
         </div>
 
@@ -75,10 +73,7 @@ export default function Experience() {
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-4">
                 <Avatar className="w-12 h-12 bg-blue-500">
-                  <AvatarImage
-                    src="/placeholder.svg?height=48&width=48"
-                    alt="DS"
-                  />
+                  <AvatarImage src="/" alt="DS" />
                   <AvatarFallback>DS</AvatarFallback>
                 </Avatar>
                 <div>
