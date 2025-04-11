@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import Hero from "@/sections/Welcome/hero";
 import Navigation from "@/components/navigation";
 import About from "@/sections/Welcome/about";
@@ -6,11 +6,17 @@ import Experience from "@/sections/Welcome/experience";
 import Projects from "@/sections/Welcome/projects";
 import Contact from "@/sections/Welcome/contact";
 
-export const metadata: Metadata = {
-  title: "Portfolio | Creative Developer",
-  description:
-    "Personal portfolio showcasing my work, experience, and achievements",
-};
+// export const metadata: Metadata = {
+//   title: "Nazal Prastya",
+//   description: "Portofolio Nazal Gusti Prastya",
+//   icons: {
+//     icon: [
+//       {
+//         url: "/favicon.png",
+//       },
+//     ],
+//   },
+// };
 
 export default function Home() {
   return (
