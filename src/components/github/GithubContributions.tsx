@@ -49,12 +49,14 @@ const GitHubContributions = ({ username }: { username: string }) => {
 
   return (
     <div
-      className={`bg-background text-medium p-4 rounded-lg shadow-md w-full border-2 h-[228px] flex justify-center items-center`}
+      className={
+        "bg-background text-medium p-4 rounded-lg shadow-md w-full border-2  h-[228px] flex justify-center item-center"
+      }
     >
       <GitHubCalendar
         username={username}
-        blockSize={12} // Block size
-        blockMargin={4} // Margin between blocks
+        blockSize={11} // Block size
+        blockMargin={3} // Margin between blocks
         fontSize={14} // Month label text size
         theme={{
           light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
