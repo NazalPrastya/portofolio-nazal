@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
 import Hero from "@/sections/Welcome/hero";
-// import About from "@/components/about";
-// import Experience from "@/components/experience";
-// import Projects from "@/components/projects";
-// import Achievements from "@/components/achievements";
-// import Contact from "@/components/contact";
 import Navigation from "@/components/navigation";
 import About from "@/sections/Welcome/about";
 import Experience from "@/sections/Welcome/experience";
