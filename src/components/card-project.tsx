@@ -43,9 +43,9 @@ const CardProject = ({ project }: { project: Project }) => {
       </div>
 
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">
+        <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">
           {project.title}
-        </h3>
+        </h2>
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 flex-grow">
           {project.description}
         </p>

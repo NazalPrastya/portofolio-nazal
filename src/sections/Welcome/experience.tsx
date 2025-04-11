@@ -30,7 +30,7 @@ export default function Experience() {
                   <AvatarFallback>BNPT</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-medium text-lg">Programmer</h3>
+                  <h2 className="font-medium text-lg">Programmer</h2>
                   <p className="text-muted-foreground">
                     Badan Nasional Penanggulangan Terorisme RI
                   </p>
@@ -54,9 +54,9 @@ export default function Experience() {
                   <AvatarFallback>DC</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-medium text-lg">
+                  <h2 className="font-medium text-lg">
                     Internship Web Developer
-                  </h3>
+                  </h2>
                   <p className="text-muted-foreground">
                     PT Cipta Muda Solusi X Kementerian Koperasi dan UKM
                   </p>
@@ -77,7 +77,7 @@ export default function Experience() {
                   <AvatarFallback>DS</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-medium text-lg">Data Science</h3>
+                  <h2 className="font-medium text-lg">Data Science</h2>
                   <p className="text-muted-foreground">
                     3rd place in Data Science Online LKS in West Java
                   </p>
