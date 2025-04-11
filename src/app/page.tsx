@@ -7,6 +7,7 @@ import Hero from "@/sections/Welcome/hero";
 // import Contact from "@/components/contact";
 import Navigation from "@/components/navigation";
 import About from "@/sections/Welcome/about";
+import Experience from "@/sections/Welcome/experience";
 
 export const metadata: Metadata = {
   title: "Portfolio | Creative Developer",
@@ -25,10 +26,10 @@ export default function Home() {
         <section id="about" className="min-h-screen py-20 w-full">
           <About />
         </section>
-        {/*<section id="experience" className="min-h-screen py-20">
+        <section id="experience" className="min-h-screen py-20">
           <Experience />
         </section>
-        <section id="projects" className="min-h-screen py-20">
+        {/* <section id="projects" className="min-h-screen py-20">
           <Projects />
         </section>
         <section id="achievements" className="min-h-screen py-20">

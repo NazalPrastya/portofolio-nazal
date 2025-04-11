@@ -9,7 +9,7 @@ import {
   User,
   Briefcase,
   FolderKanban,
-  Award,
+  // Award,
   Mail,
   Menu,
   X,
@@ -23,7 +23,7 @@ const navItems = [
   { name: "About", href: "#about", icon: User },
   { name: "Experience", href: "#experience", icon: Briefcase },
   { name: "Projects", href: "#projects", icon: FolderKanban },
-  { name: "Achievements", href: "#achievements", icon: Award },
+  // { name: "Achievements", href: "#achievements", icon: Award },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 
