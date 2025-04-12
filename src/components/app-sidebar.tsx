@@ -1,4 +1,5 @@
 import { BicepsFlexed,  FolderKanban, HandMetal,  Home, Inbox } from "lucide-react"
+import { usePathname } from "next/navigation"
 import {
   Sidebar,
   SidebarContent,
@@ -40,6 +41,8 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const pathname = usePathname()
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -47,16 +50,23 @@ export function AppSidebar() {
           <SidebarGroupLabel>Nazal Panel</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            {items.map((item) => {
+                const isActive = pathname === item.url
+
+                return (
+                  <SidebarMenuItem
+                    key={item.title}
+                    className={isActive ? "bg-muted text-primary font-semibold" : ""}
+                  >
+                    <SidebarMenuButton asChild>
+                      <a href={item.url} className="flex items-center gap-2">
+                        <item.icon className={isActive ? "text-primary" : ""} />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
