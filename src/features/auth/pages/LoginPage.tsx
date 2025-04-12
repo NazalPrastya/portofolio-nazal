@@ -15,6 +15,7 @@ import { supabase } from "~/lib/supabase/client";
 import { SupabaseAuthErrorCode } from "~/lib/supabase/authErrorCodes";
 import { useRouter } from "next/router";
 import { type AuthError } from "@supabase/supabase-js";
+import { GuestRoute } from "~/components/layout/GuestRoute";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -56,7 +57,7 @@ export default function LoginPage() {
     setShowPassword(!showPassword);
   };
   return (
-    <>
+    <GuestRoute>
       <HeadMetaData
         title="Login"
         metaDescription="Login"
@@ -141,6 +142,6 @@ export default function LoginPage() {
          
         </Card>
       </div>
-    </>
+    </GuestRoute>
   )
 }
