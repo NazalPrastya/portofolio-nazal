@@ -274,6 +274,7 @@ function ChartLegendContent({
       )}
     >
       {payload.map((item) => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         const key = `${nameKey || item.dataKey || "value"}`
         const itemConfig = getPayloadConfigFromPayload(config, item, key)
 

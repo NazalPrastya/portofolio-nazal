@@ -1,4 +1,4 @@
-import { BicepsFlexed,  FolderKanban, HandMetal,  Home } from "lucide-react"
+import { BicepsFlexed,  FolderKanban, HandMetal,  Home, Inbox } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -27,14 +27,14 @@ const items = [
     icon: FolderKanban,
   },
   {
-    title: "Projects",
-    url: "/dashboard/projects",
-    icon: FolderKanban,
-  },
-  {
     title: "Skills",
     url: "/dashboard/skills",
     icon: HandMetal,
+  },
+  {
+    title: "Inbox",
+    url: "/dashboard/inbox",
+    icon: Inbox,
   },
  
 ]
