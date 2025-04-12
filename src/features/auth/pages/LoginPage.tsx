@@ -30,18 +30,20 @@ export default function LoginPage() {
       });
 
       if (error) throw error;
+      toast.success("Success Login");
 
-      await router.replace("/");
+      await router.replace("/dashboard");
     } catch (error) {
       switch ((error as AuthError).code) {
         case SupabaseAuthErrorCode.invalid_credentials:
-          form.setError("email", { message: "Email atau password salah" });
-          form.setError("password", {
-            message: "Email atau password salah",
-          });
+          // form.setError("email", { message: "Email atau password salah" });
+          // form.setError("password", {
+          //   message: "Email atau password salah",
+          // });
+          toast.error("Email ataus password salah");
           break;
         case SupabaseAuthErrorCode.email_not_confirmed:
-          form.setError("email", { message: "Email belum diverifikasi" });
+           toast.error("Email belum diverifikasi" );
           break;
         default:
           toast.error("Sebuah kesalahan terjadi, coba lagi beberapa saat.");
