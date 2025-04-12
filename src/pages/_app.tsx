@@ -10,8 +10,7 @@ import { GridPattern } from "~/components/magicui/grid-pattern";
 import { ThemeProvider } from "~/components/theme-provider";
 import { cn } from "~/lib/utils";
 import Footer from "~/sections/footer";
-import { Toaster } from "sonner";
-import Head from "next/head";
+import { Toaster } from "~/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 

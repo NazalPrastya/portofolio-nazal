@@ -10,17 +10,45 @@ import { Form, FormControl,  FormField, FormItem, FormLabel, FormMessage } from 
 import { useState } from "react";
 import { loginFormSchema, type LoginFormSchema } from "../form/login";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { supabase } from "~/lib/supabase/client";
+import { SupabaseAuthErrorCode } from "~/lib/supabase/authErrorCodes";
+import { useRouter } from "next/router";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const form = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
   });
+  const router = useRouter();
 
-  const onLoginSubmit = (values: LoginFormSchema) => {
-    console.log(values);
-    // Handle login logic here
+  const onLoginSubmit = async (values: LoginFormSchema) => {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (error) throw error;
+
+      await router.replace("/");
+    } catch (error) {
+      switch ((error as AuthError).code) {
+        case SupabaseAuthErrorCode.invalid_credentials:
+          form.setError("email", { message: "Email atau password salah" });
+          form.setError("password", {
+            message: "Email atau password salah",
+          });
+          break;
+        case SupabaseAuthErrorCode.email_not_confirmed:
+          form.setError("email", { message: "Email belum diverifikasi" });
+          break;
+        default:
+          toast.error("Sebuah kesalahan terjadi, coba lagi beberapa saat.");
+      }
+    }
   };
+  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
