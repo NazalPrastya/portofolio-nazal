@@ -1,4 +1,5 @@
 import { BicepsFlexed,  FolderKanban, HandMetal,  Home, Inbox } from "lucide-react"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   Sidebar,
@@ -6,9 +7,11 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "~/components/ui/sidebar"
 
 const items = [
@@ -45,9 +48,27 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
+      <SidebarHeader >
+      <div className="flex items-center gap-3 px-4 py-3">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl ">
+        <Image
+          src="/favicon.png"
+          alt="Logo"
+          width={40}
+          height={40}
+          className="bg-purple-100 dark:bg-white rounded-md"
+        />
+      </div>
+      <div>
+        <div className="text-sm font-medium ">Nazal Prastya</div>
+        <div className="text-xs text-muted-foreground">Web Developer</div>
+      </div>
+    </div>
+      </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Nazal Panel</SidebarGroupLabel>
+          <SidebarGroupLabel>Content Management</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
             {items.map((item) => {
