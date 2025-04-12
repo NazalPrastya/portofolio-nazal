@@ -6,15 +6,7 @@ import { ThemeToggle } from "~/components/theme-toggle"
 import { UserNav } from "~/components/user-nav"
 import { api } from "~/utils/api"
 import Head from "next/head"
-interface UserNavProps {
-  user: {
-    email: string;
-    emailVerified: string;
-    id: string;
-    image: string;
-    name: string;
-  };
-}
+
 export default function DashboardLayout({ children,title }: { children: React.ReactNode,title:string }) {
   const {data} = api.profile.getProfile.useQuery()
   return (
@@ -29,7 +21,7 @@ export default function DashboardLayout({ children,title }: { children: React.Re
             <SidebarTrigger />
             <div className="ml-auto flex items-center space-x-4">
               <ThemeToggle />
-              <UserNav user={data as UserNavProps["user"]} />
+              <UserNav user={data} />
             </div>
           </header>
           <div className="px-4 sm:px-6 py-4 border-b">

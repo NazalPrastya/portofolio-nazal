@@ -1,6 +1,6 @@
 "use client"
 
-import { LogOut, Settings, User } from "lucide-react"
+import { LogOut } from "lucide-react"
 import { toast } from "sonner"
 
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
@@ -15,16 +15,8 @@ import {
 } from "~/components/ui/dropdown-menu"
 import { supabase } from "~/lib/supabase/client"
 
- interface UserNavProps {
-  user: {
-    email: string;
-    emailVerified: string;
-    id: string;
-    image: string;
-    name: string;
-  };
-}
-export function UserNav({ user }: UserNavProps)  {
+
+export function UserNav({ user }: { user: Record<string, string> })  {
     const handleLogout = async () => {
         await supabase.auth.signOut();
         toast.success("Successfully logged out");
@@ -35,8 +27,8 @@ export function UserNav({ user }: UserNavProps)  {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/placeholder.svg" alt="@username" />
-            <AvatarFallback>UN</AvatarFallback>
+            <AvatarImage src={user?.image} alt="@username" />
+            <AvatarFallback>{user?.name}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
