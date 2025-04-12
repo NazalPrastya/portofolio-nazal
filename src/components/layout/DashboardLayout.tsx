@@ -7,12 +7,12 @@ import { UserNav } from "~/components/user-nav"
 import { api } from "~/utils/api"
 import Head from "next/head"
 
-export default function DashboardLayout({ children,title }: { children: React.ReactNode,title:string }) {
-  const {data} = api.profile.getProfile.useQuery()
+export default function DashboardLayout({ children,title=" " }: { children: React.ReactNode,title:string  }) {
+  const { data } = api.profile.getProfile.useQuery() as { data: Record<string, string> | undefined }
   return (
     <AuthRoute>
       <Head>
-        <title>{title}</title>
+        <title>Dashboard | {title}</title>
       </Head>
       <SidebarProvider>
         <AppSidebar />
@@ -21,7 +21,10 @@ export default function DashboardLayout({ children,title }: { children: React.Re
             <SidebarTrigger />
             <div className="ml-auto flex items-center space-x-4">
               <ThemeToggle />
-              <UserNav user={data} />
+              {data && (
+
+                <UserNav user={data} />
+              )}
             </div>
           </header>
           <div className="px-4 sm:px-6 py-4 border-b">
