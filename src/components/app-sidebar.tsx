@@ -1,5 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+import { BicepsFlexed,  FolderKanban, HandMetal,  Home } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -11,33 +10,33 @@ import {
   SidebarMenuItem,
 } from "~/components/ui/sidebar"
 
-// Menu items.
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Experience",
+    url: "/dashboard/experience",
+    icon: BicepsFlexed,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Projects",
+    url: "/dashboard/projects",
+    icon: FolderKanban,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Projects",
+    url: "/dashboard/projects",
+    icon: FolderKanban,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Skills",
+    url: "/dashboard/skills",
+    icon: HandMetal,
   },
+ 
 ]
 
 export function AppSidebar() {
@@ -45,7 +44,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Nazal Panel</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
