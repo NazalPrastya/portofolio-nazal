@@ -13,6 +13,8 @@ export default function DashboardLayout({ children,title=" " }: { children: Reac
     <AuthRoute>
       <Head>
         <title>Dashboard | {title}</title>
+        <link rel="icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <SidebarProvider>
         <AppSidebar />

@@ -22,3 +22,35 @@ model User {
     image         String?
     emailVerified DateTime?
 }
+
+model Skill {
+    id            String   @id @default(cuid())
+    skill         String    
+    url           String?
+    icon          String
+    color         String
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+}
+
+model Experience{
+    id            String   @id @default(cuid())
+    company       String
+    logo          String?
+    desc          Json[]
+    dateStart     DateTime
+    dateEnd       DateTime?
+    now           Boolean
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+}
+
+model Projects {
+    id            String   @id @default(cuid())
+    name          Json[]
+    image         String
+    tech          Json[]
+    desc          Json[]
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+}
