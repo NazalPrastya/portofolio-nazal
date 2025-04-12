@@ -28,7 +28,6 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const { theme, setTheme } = useTheme();
 
 
@@ -121,7 +120,6 @@ export default function Navigation() {
   };
 
   const toggleTheme = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     setTheme(theme === "dark" ? "light" : "dark");
   };
 

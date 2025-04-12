@@ -1,10 +1,11 @@
 "use client";
 import { Sparkles } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
-import CardProject from "@/components/card-project";
+import CardProject from "~/components/card-project";
 import { ArrowBigLeft } from "lucide-react";
 import Link from "next/link";
+import { useInView } from "framer-motion";
 
 interface Project {
   id: number;
@@ -90,6 +91,7 @@ const projects: Project[] = [
 export default function ListProject() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

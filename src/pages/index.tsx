@@ -6,10 +6,10 @@ import Experience from "~/sections/Welcome/experience";
 import Hero from "~/sections/Welcome/hero";
 import Projects from "~/sections/Welcome/projects";
 
-import { api } from "~/utils/api";
+// import { api } from "~/utils/api";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.post.hello.useQuery({ text: "from tRPC" });
 
   return (
     <div className="relative flex min-h-screen overflow-x-hidden">

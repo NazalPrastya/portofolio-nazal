@@ -88,7 +88,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 }) as boolean;
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
 
   const containerVariants = {
