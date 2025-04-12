@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import { supabase } from "~/lib/supabase/client";
 import { SupabaseAuthErrorCode } from "~/lib/supabase/authErrorCodes";
 import { useRouter } from "next/router";
-import type { AuthError } from "next-auth";
+import { type AuthError } from "@supabase/supabase-js";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
