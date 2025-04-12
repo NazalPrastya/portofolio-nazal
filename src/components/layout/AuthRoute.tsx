@@ -10,7 +10,7 @@ export const AuthRoute = (props: PropsWithChildren) => {
       const { data } = await supabase.auth.getUser();
 
       if (!data.user) {
-        await router.replace("/dashboard");
+        await router.replace("/");
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -7,13 +7,13 @@
  * need to use are documented accordingly near the end.
  */
 
+import type { User } from "@supabase/supabase-js";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
-import { type Session } from "next-auth";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import { createSSRClient } from "~/lib/supabase/server";
 
-import { auth } from "~/server/auth";
 import { db } from "~/server/db";
 
 /**
@@ -25,7 +25,7 @@ import { db } from "~/server/db";
  */
 
 interface CreateContextOptions {
-  session: Session | null;
+ user:User|null;
 }
 
 /**
@@ -39,9 +39,9 @@ interface CreateContextOptions {
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
-  return {
-    session: opts.session,
+  return { 
     db,
+    user: opts.user,
   };
 };
 
@@ -52,13 +52,15 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
+  // Dapetin user yang lagi login
+  const supabaseServerClient = createSSRClient({
+    req: opts.req,
+    res: opts.res,
+  });
 
-  // Get the session from the server using the getServerSession wrapper function
-  const session = await auth(req, res);
-
+  const { data } = await supabaseServerClient.auth.getUser();
   return createInnerTRPCContext({
-    session,
+    user: data.user,
   });
 };
 
@@ -148,13 +150,23 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)
   .use(({ ctx, next }) => {
-    if (!ctx.session?.user) {
+    if (!ctx?.user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
     return next({
       ctx: {
         // infers the `session` as non-nullable
-        session: { ...ctx.session, user: ctx.session.user },
+        user: { ...ctx.user, user: ctx.user },
       },
     });
   });
+
+  const authMiddleware = t.middleware(async ({ ctx, next }) => {
+    if (!ctx.user)
+      throw new TRPCError({ code: "UNAUTHORIZED", message: "user unauthorized" });
+  
+    return await next();
+  });
+
+
+  export const privateProcedure = t.procedure.use(authMiddleware);
