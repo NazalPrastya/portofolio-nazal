@@ -1,4 +1,6 @@
 
+import Head from "next/head";
+import { HeadMetaData } from "~/components/layout/HeadMetaData";
 import Navigation from "~/components/navigation";
 import About from "~/sections/Welcome/about";
 import Contact from "~/sections/Welcome/contact";
@@ -12,6 +14,13 @@ export default function Home() {
   // const hello = api.post.hello.useQuery({ text: "from tRPC" });
 
   return (
+    <>
+    <HeadMetaData
+      title="Web Developer"
+      metaDescription="Nazal Prastya adalah seorang Web Developer dan UI Designer yang berfokus pada pembuatan aplikasi web modern dan desain antarmuka yang elegan."
+      pathname="/"
+      />
+
     <div className="relative flex min-h-screen overflow-x-hidden">
     <Navigation />
     <main className="flex-1 w-full overflow-x-hidden px-4 sm:px-8 md:px-16 lg:px-24">
@@ -36,6 +45,7 @@ export default function Home() {
       */}
     </main>
   </div>
+      </>
   );
 }
 

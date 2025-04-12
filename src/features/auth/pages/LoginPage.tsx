@@ -4,10 +4,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 import { ArrowLeft } from "lucide-react"
+import Head from "next/head"
 
 
 export default function LoginPage() {
   return (
+    <>
+    <Head>
+    <title>Nazal Prastya - Login Page</title>
+    </Head>
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <Button variant="ghost" className="mb-4 flex items-center gap-2" asChild>
@@ -48,5 +53,7 @@ export default function LoginPage() {
         </CardFooter>
       </Card>
     </div>
+    </>
+
   )
 }
