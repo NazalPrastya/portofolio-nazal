@@ -1,5 +1,4 @@
 
-import Head from "next/head";
 import { HeadMetaData } from "~/components/layout/HeadMetaData";
 import Navigation from "~/components/navigation";
 import About from "~/sections/Welcome/about";

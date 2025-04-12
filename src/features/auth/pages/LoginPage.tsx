@@ -4,15 +4,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 import { ArrowLeft } from "lucide-react"
-import Head from "next/head"
+import { HeadMetaData } from "~/components/layout/HeadMetaData"
 
 
 export default function LoginPage() {
   return (
     <>
-    <Head>
-    <title>Nazal Prastya - Login Page</title>
-    </Head>
+    <HeadMetaData
+         title="Login"
+         metaDescription="Login"
+         pathname="/"
+         />
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <Button variant="ghost" className="mb-4 flex items-center gap-2" asChild>
