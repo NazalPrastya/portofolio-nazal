@@ -19,6 +19,28 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 7,
+    title: "Pelaporan dan Demografi Desa",
+    description:
+      "Aplikasi berbasis web yang digunakan untuk melakukan laporan dan menampilkan demografi desa.",
+    image: "/assets/porto/pelaporan.png",
+    tags: ["Laravel", "ReactJS", "MySQL", "MUI", "WebSocket"],
+    category: "Government",
+    demoLink: "#",
+    githubLink: "#",
+  },
+  {
+    id: 8,
+    title: "Ticketing System",
+    description:
+      "Laporan keamanan siber untuk mengatasi ancaman dan kemanan siber berbasis web",
+    image: "/assets/porto/ticketing.png",
+    tags: ["Laravel", "MySQL"],
+    category: "Government",
+    demoLink: "#",
+    githubLink: "#",
+  },
+  {
     id: 1,
     title: "Budget Planning System",
     description:
@@ -90,7 +112,6 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -106,13 +127,13 @@ export default function Projects() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
   return (
-    <div className="w-full container">
-      <div className="mb-12 ">
+    <div className="container w-full">
+      <div className="mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          <Sparkles className="inline w-9 h-9 text-primary" />
+          <Sparkles className="text-primary inline h-9 w-9" />
           Projects
         </h1>
-        <p className="text-muted-foreground text-lg text-justify mt-4">
+        <p className="text-muted-foreground mt-4 text-justify text-lg">
           Explore a Collection of My Varied and Creative Works
         </p>
       </div>
@@ -123,7 +144,7 @@ export default function Projects() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
           <motion.div key={project.id} variants={itemVariants}>
@@ -131,7 +152,7 @@ export default function Projects() {
           </motion.div>
         ))}
       </motion.div>
-      <div className="w-full flex justify-center mt-5">
+      <div className="mt-5 flex w-full justify-center">
         <Link
           className={buttonVariants({ variant: "default" })}
           href={"/projects"}

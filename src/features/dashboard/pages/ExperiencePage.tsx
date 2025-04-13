@@ -14,6 +14,8 @@ import {
   TableRow,
 } from "~/components/ui/table"
 import DashboardLayout from "~/components/layout/DashboardLayout"
+import { api } from "~/utils/api"
+import { FormCreate } from "../form/experience/FormCreate"
 
 const experiences = [
   {
@@ -40,11 +42,15 @@ const experiences = [
   // Tambahkan data lebih banyak untuk melihat efek pagination
 ]
 
-export default function ExperiencePage() {
+
+
+export default function  ExperiencePage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 5
-
+  api.experience.getList.useQuery()
+   
+ 
   const filteredExperiences = useMemo(() => {
     return experiences.filter((exp) =>
       exp.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -73,7 +79,7 @@ export default function ExperiencePage() {
               }}
               className="w-[200px]"
             />
-            <Button>Add Experience</Button>
+          <FormCreate/>
           </div>
         </div>
 

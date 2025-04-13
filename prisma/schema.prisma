@@ -35,9 +35,10 @@ model Skill {
 
 model Experience{
     id            String   @id @default(cuid())
-    company       Json[]
+    company       Json
     logo          String?
-    desc          Json[]
+    desc          Json
+    position      String
     dateStart     DateTime
     dateEnd       DateTime?
     now           Boolean
@@ -47,10 +48,10 @@ model Experience{
 
 model Projects {
     id            String   @id @default(cuid())
-    name          Json[]
+    name          Json
     image         String
-    tech          Json[]
-    desc          Json[]
+    tech          Json
+    desc          Json
     createdAt     DateTime @default(now())
     updatedAt     DateTime @updatedAt
 }
