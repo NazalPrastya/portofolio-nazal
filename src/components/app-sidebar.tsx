@@ -1,5 +1,6 @@
 import { BicepsFlexed,  FolderKanban, HandMetal,  Home, Inbox } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   Sidebar,
@@ -80,10 +81,10 @@ export function AppSidebar() {
                     className={isActive ? "bg-muted text-primary font-semibold" : ""}
                   >
                     <SidebarMenuButton asChild>
-                      <a href={item.url} className="flex items-center gap-2">
+                      <Link href={item.url} className="flex items-center gap-2">
                         <item.icon className={isActive ? "text-primary" : ""} />
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 )

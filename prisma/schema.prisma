@@ -35,7 +35,7 @@ model Skill {
 
 model Experience{
     id            String   @id @default(cuid())
-    company       String
+    company       Json[]
     logo          String?
     desc          Json[]
     dateStart     DateTime

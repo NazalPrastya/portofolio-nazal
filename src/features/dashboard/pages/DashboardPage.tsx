@@ -5,7 +5,6 @@ import CardTotal from "~/components/card-total"
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout title="Dashboard">
       <div className="space-y-6">
         <h2 className="text-2xl font-bold flex items-center">
           <Hand className="mr-2 h-6 w-6 text-violet-600" />
@@ -36,6 +35,10 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
   )
 }
+
+DashboardPage.getLayout = (page: React.ReactNode) => (
+  <DashboardLayout title="Dashboard">{page}</DashboardLayout>
+);
+
