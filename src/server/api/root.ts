@@ -2,6 +2,7 @@ import { postRouter } from "~/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { profileRouter } from "./routers/profile";
 import { experienceRouter } from "./routers/experience";
+import { chatBotRouter } from "./routers/chatbot";
 
 /**
  * This is the primary router for your server.
@@ -11,7 +12,8 @@ import { experienceRouter } from "./routers/experience";
 export const appRouter = createTRPCRouter({
   post: postRouter,
   profile: profileRouter,
-  experience:experienceRouter
+  experience: experienceRouter,
+  chatBot: chatBotRouter,
 });
 
 // export type definition of API

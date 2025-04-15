@@ -25,7 +25,7 @@ export default function Contact() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setState((prevState) => ({
@@ -37,40 +37,38 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Here you would typically send the form data to your backend
     alert("Thank you for your message! I'll get back to you soon.");
     setState({ name: "", email: "", message: "" });
   };
 
   return (
-    <div className="w-full container py-16">
+    <div className="container w-full py-16">
       <div className="mb-12 max-w-md">
-        <p className="text-primary font-medium flex items-center gap-2">
-          <Signature className="w-5 h-5" />
+        <p className="text-primary flex items-center gap-2 font-medium">
+          <Signature className="h-5 w-5" />
           CONNECT WITH ME
         </p>
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
           Let&apos;s Talk a project together
         </h1>
       </div>
-
-      <div className="flex flex-col md:flex-row gap-12">
+      <div className="flex flex-col gap-12 md:flex-row">
         {/* Profile Section */}
         <div className="w-full md:w-1/3">
           <Card className="mb-6">
-            <div className="relative flex justify-center mt-6 mb-6">
+            <div className="relative mt-6 mb-6 flex justify-center">
               {/* Profile Image with Avatar component - centered */}
-              <Avatar className="w-40 h-40 border-4 border-background">
+              <Avatar className="border-background h-40 w-40 border-4">
                 <AvatarImage src="/assets/me-kotak.jpg" alt="Profile Photo" />
                 <AvatarFallback>ME</AvatarFallback>
               </Avatar>
 
               {/* Open to Work Badge - positioned at top-right of avatar */}
               <div className="absolute -top-2 left-0 translate-x-1/4">
-                <Badge className="flex items-center gap-2 py-2 px-4 font-medium shadow-md bg-accent text-accent-foreground">
+                <Badge className="bg-accent text-accent-foreground flex items-center gap-2 px-4 py-2 font-medium shadow-md">
                   <div className="relative">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full absolute top-0 left-0 animate-ping opacity-75"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                    <div className="absolute top-0 left-0 h-3 w-3 animate-ping rounded-full bg-green-500 opacity-75"></div>
                   </div>
                   Open To Work
                 </Badge>
@@ -87,42 +85,42 @@ export default function Contact() {
             </CardContent>
 
             {/* Social Media Links */}
-            <CardFooter className="flex gap-3 ">
+            <CardFooter className="flex gap-3">
               <a
                 href="https://github.com/NazalPrastya"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary flex items-center gap-2 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="github nazal prastya"
               >
-                <Github className="w-5 h-5" />
+                <Github className="h-5 w-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/nazal-gusti-prastya-8a890a249/"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary flex items-center gap-2 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="linkedin nazal prastya"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="https://www.instagram.com/nazalprastya/"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary flex items-center gap-2 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="instagram nazal prastya"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="h-5 w-5" />
               </a>
               <a
                 href="mailto:nazalprastya@gmail.com"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary flex items-center gap-2 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="email nazal prastya"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="h-5 w-5" />
               </a>
             </CardFooter>
           </Card>
