@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Bot, X, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -14,13 +14,74 @@ import {
   CardTitle,
 } from "./ui/card";
 import { cn } from "~/lib/utils";
+import { api } from "~/utils/api";
+
+// Komponen untuk menampilkan animasi teks per-huruf
+const TypedMessage = ({ text }: { text: string }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isTyping = currentIndex < text.length;
+
+  useEffect(() => {
+    if (isTyping) {
+      const timerId = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      }, 30);
+
+      return () => clearTimeout(timerId);
+    }
+  }, [currentIndex, isTyping, text]);
+
+  return <>{displayedText}</>;
+};
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
-    [{ text: "Hi there! How can I help you today?", isUser: false }],
-  );
+  const [messages, setMessages] = useState<
+    { text: string; isUser: boolean; isTyping?: boolean }[]
+  >([
+    {
+      text: "Halo! aku asisten Nazal. Tanyakan sesuatu tentang bos saya ya!",
+      isUser: false,
+      isTyping: true,
+    },
+  ]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const { mutate: sendQuestion } = api.chatBot.chat.useMutation({
+    onMutate: () => setIsLoading(true),
+    onSuccess: (data) => {
+      setMessages((prev) => [
+        ...prev,
+        { text: data.reply, isUser: false, isTyping: true },
+      ]);
+    },
+    onError: () => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: "Maaf, bos saya belum bayar saya, jadi tanyakan sendiri aja ya! HEHE",
+          isUser: false,
+          isTyping: true,
+        },
+      ]);
+      setIsLoading(false);
+    },
+    onSettled: () => setIsLoading(false),
+  });
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -28,21 +89,13 @@ export default function ChatBot() {
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, { text: input, isUser: true }]);
+    if (!input.trim() || isLoading) return;
 
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          {
-            text: "Thanks for your message! This is a demo response.",
-            isUser: false,
-          },
-        ]);
-      }, 1000);
+    const newMessage = { text: input, isUser: true };
+    setMessages((prev) => [...prev, newMessage]);
+    setInput("");
 
-      setInput("");
-    }
+    sendQuestion({ question: input });
   };
 
   return (
@@ -89,10 +142,15 @@ export default function ChatBot() {
                         : "bg-muted",
                     )}
                   >
-                    {message.text}
+                    {message.isUser || !message.isTyping ? (
+                      message.text
+                    ) : (
+                      <TypedMessage text={message.text} />
+                    )}
                   </div>
                 </div>
               ))}
+              <div ref={messagesEndRef} />
             </div>
           </CardContent>
           <CardFooter className="p-3 pt-0">
@@ -103,7 +161,12 @@ export default function ChatBot() {
                 onChange={(e) => setInput(e.target.value)}
                 className="flex-1"
               />
-              <Button type="submit" size="icon" className="h-10 w-10">
+              <Button
+                type="submit"
+                size="icon"
+                className="h-10 w-10"
+                disabled={isLoading}
+              >
                 <Send className="h-4 w-4" />
               </Button>
             </form>
@@ -111,7 +174,6 @@ export default function ChatBot() {
         </Card>
       </div>
 
-      {/* Chat Button */}
       <Button
         size="icon"
         className="h-12 w-12 rounded-full shadow-lg"

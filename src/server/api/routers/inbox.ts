@@ -29,7 +29,6 @@ export const inboxRouter = createTRPCRouter({
           message: input.message,
         },
       });
-
       console.log("inbox", inboxEntry);
       try {
         const response = await axios.post(
@@ -47,7 +46,7 @@ Pesan :${input.message}`,
             },
           },
         );
-        console.log("resWa", response);
+
         return {
           success: true,
           inboxEntry,

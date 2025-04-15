@@ -10,7 +10,6 @@ export const chatBotRouter = createTRPCRouter({
     .input(z.object({ question: z.string() }))
     .mutation(async ({ input }) => {
       const { question } = input;
-
       const { data: experiences } = await supabase
         .from("experiences")
         .select("*")
@@ -46,14 +45,14 @@ export const chatBotRouter = createTRPCRouter({
           {
             role: "system",
             content: `
-              Kamu adalah asisten digital Nazal. Jawablah pertanyaan berdasarkan data berikut:
+              Kamu adalah asisten digital Nazal. Jawablah pertanyaan berdasarkan siapa nazal dan data berikut:
 
               **Pengalaman**:
               ${experienceText}
 
               **Project**:
               ${projectText}
-
+            
               **Rules**:
               - Jika tidak ada data terkait, jawab: "Wah, sepertinya Nazal belum pernah bahas ini. Coba tanya hal lain ya!"
               - Bahasa: Santai, friendly, dan pakai kata ganti "aku/gw".
