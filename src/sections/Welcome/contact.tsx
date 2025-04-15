@@ -1,9 +1,6 @@
 "use client";
-// Contact.jsx
 import { Signature, Github, Linkedin, Mail, Instagram } from "lucide-react";
-import { useState } from "react";
 
-// Import shadcn components
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
@@ -13,32 +10,46 @@ import {
   CardFooter,
   CardHeader,
 } from "~/components/ui/card";
-import { Label } from "~/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
+import {
+  FormMessage,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  Form,
+} from "~/components/ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  inboxFormSchema,
+  type InboxFormSchema,
+} from "~/features/inbox/form/inbox";
+import { api } from "~/utils/api";
+import { toast } from "sonner";
 
 export default function Contact() {
-  const [formData, setState] = useState({
-    name: "",
-    email: "",
-    message: "",
+  const form = useForm<InboxFormSchema>({
+    resolver: zodResolver(inboxFormSchema),
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  const { mutate: sendingInbox, isPending: sendingInboxIsPending } =
+    api.inbox.create.useMutation({
+      onSuccess: () => {
+        toast.success("Terimakasih sudah menghubungi");
+        form.setValue("name", "");
+        form.setValue("email", "");
+        form.setValue("message", "");
+      },
+      onError: () => {
+        toast.warning("Pesan tersimpan, namun ada sedikit kesalahan");
+      },
+    });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! I'll get back to you soon.");
-    setState({ name: "", email: "", message: "" });
+  const onSubmit = async (values: InboxFormSchema) => {
+    console.log(values);
+    sendingInbox(values);
   };
 
   return (
@@ -57,13 +68,11 @@ export default function Contact() {
         <div className="w-full md:w-1/3">
           <Card className="mb-6">
             <div className="relative mt-6 mb-6 flex justify-center">
-              {/* Profile Image with Avatar component - centered */}
               <Avatar className="border-background h-40 w-40 border-4">
                 <AvatarImage src="/assets/me-kotak.jpg" alt="Profile Photo" />
                 <AvatarFallback>ME</AvatarFallback>
               </Avatar>
 
-              {/* Open to Work Badge - positioned at top-right of avatar */}
               <div className="absolute -top-2 left-0 translate-x-1/4">
                 <Badge className="bg-accent text-accent-foreground flex items-center gap-2 px-4 py-2 font-medium shadow-md">
                   <div className="relative">
@@ -75,7 +84,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Description */}
             <CardContent>
               <p className="text-muted-foreground">
                 My inbox is always open, if you have a project to work on
@@ -84,7 +92,6 @@ export default function Contact() {
               </p>
             </CardContent>
 
-            {/* Social Media Links */}
             <CardFooter className="flex gap-3">
               <a
                 href="https://github.com/NazalPrastya"
@@ -136,49 +143,63 @@ export default function Contact() {
               </p>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
+              <Form {...form}>
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="nazal.." type="text" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="mt-3">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="name@example.com"
+                          type="email"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem className="mt-3">
+                      <FormLabel>Pesan</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="tell me about something"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    placeholder="Tell me about your project..."
-                    required
-                  />
-                </div>
-
-                <Button type="submit" className="w-full">
+                <Button
+                  onClick={form.handleSubmit(onSubmit)}
+                  type="submit"
+                  className="mt-5 w-full"
+                  disabled={sendingInboxIsPending}
+                >
                   Send Message
                 </Button>
-              </form>
+              </Form>
             </CardContent>
           </Card>
         </div>
