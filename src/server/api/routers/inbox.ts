@@ -13,7 +13,6 @@ export const inboxRouter = createTRPCRouter({
         greeting: `Hello ${input.text}`,
       };
     }),
-
   create: publicProcedure
     .input(
       z.object({
@@ -47,7 +46,7 @@ Pesan :${input.message}`,
             },
           },
         );
-
+        console.log("resWa", response);
         return {
           success: true,
           inboxEntry,
