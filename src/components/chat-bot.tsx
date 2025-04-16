@@ -73,7 +73,7 @@ export default function ChatBot() {
       setMessages((prev) => [
         ...prev,
         {
-          text: "Maaf, bos saya belum bayar saya, jadi tanyakan sendiri aja ya! HEHE",
+          text: "Maaf, bos saya belum bayar saya, bantu kasi kerjaan bos saya ya biar saya idup! HEHE",
           isUser: false,
           isTyping: true,
         },
