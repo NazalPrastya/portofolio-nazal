@@ -23,7 +23,7 @@ export default function Hero() {
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center">
-      <div className="absolute top-0 left-0 flex space-x-4 p-4 md:right-0">
+      <div className="absolute top-0 left-0 flex space-x-4 p-4 md:right-0 md:left-auto">
         <Link
           href="https://github.com/NazalPrastya"
           target="_blank"
@@ -96,7 +96,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 transform"
+        className="absolute -bottom-10 left-1/2 -translate-x-1/2 transform md:bottom-12"
       >
         <div
           className="flex cursor-pointer flex-col items-center"
