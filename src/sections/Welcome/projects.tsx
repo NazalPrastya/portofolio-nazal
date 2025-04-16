@@ -71,7 +71,7 @@ const projects: Project[] = [
     tags: ["Laravel", "Midtrans", "MySQL", "TailwindCSS"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/NazalPrastya/sistem-kantin",
   },
   {
     id: 4,
@@ -104,7 +104,17 @@ const projects: Project[] = [
     category: "Government",
     tags: ["Laravel", "MySQL", "TailwindCSS"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/NazalPrastya/zapeosethero",
+  },
+  {
+    id: 9,
+    title: "Najal Games",
+    description: "simple fun games",
+    image: "/assets/porto/najal-games.jpg",
+    category: "Fun",
+    tags: ["ReactJS", "Firebase"],
+    demoLink: "https://najal-games.vercel.app",
+    githubLink: "https://github.com/NazalPrastya/kalkulator-cinta",
   },
 ];
 
