@@ -7,11 +7,7 @@ import Experience from "~/sections/Welcome/experience";
 import Hero from "~/sections/Welcome/hero";
 import Projects from "~/sections/Welcome/projects";
 
-// import { api } from "~/utils/api";
-
 export default function Home() {
-  // const hello = api.post.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <HeadMetaData
@@ -29,7 +25,7 @@ export default function Home() {
           <section id="about" className="min-h-screen w-full py-20">
             <About />
           </section>
-          <section id="experience" className="min-h-screen py-20">
+          <section id="experience" className="py-20">
             <Experience />
           </section>
           <section id="projects" className="min-h-screen py-20">
@@ -50,27 +46,3 @@ export default function Home() {
     </>
   );
 }
-
-// function AuthShowcase() {
-//   const { data: sessionData } = useSession();
-
-//   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
-//     undefined, // no input
-//     { enabled: sessionData?.user !== undefined },
-//   );
-
-//   return (
-//     <div className="flex flex-col items-center justify-center gap-4">
-//       <p className="text-center text-2xl text-white">
-//         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-//         {secretMessage && <span> - {secretMessage}</span>}
-//       </p>
-//       <button
-//         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-//         onClick={sessionData ? () => void signOut() : () => void signIn()}
-//       >
-//         {sessionData ? "Sign out" : "Sign in"}
-//       </button>
-//     </div>
-//   );
-// }

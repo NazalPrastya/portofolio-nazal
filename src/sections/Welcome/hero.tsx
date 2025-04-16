@@ -22,8 +22,8 @@ export default function Hero() {
   }, [typedText]);
 
   return (
-    <div className="flex flex-col justify-center min-h-screen relative">
-      <div className="absolute top-0 right-0 p-4 flex space-x-4">
+    <div className="relative flex min-h-screen flex-col justify-center">
+      <div className="absolute top-0 left-0 flex space-x-4 p-4 md:right-0">
         <Link
           href="https://github.com/NazalPrastya"
           target="_blank"
@@ -58,9 +58,9 @@ export default function Hero() {
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
           <div className="flex justify-center">
-            <div className="relative w-[280px] h-[350px] sm:w-[320px] sm:h-[400px] md:w-[380px] md:h-[480px]">
+            <div className="relative h-[350px] w-[280px] sm:h-[400px] sm:w-[320px] md:h-[480px] md:w-[380px]">
               {/* Image with clip path */}
-              <div className="absolute inset-0 overflow-hidden rounded-full border-4 border-background shadow-xl">
+              <div className="border-background absolute inset-0 overflow-hidden rounded-full border-4 shadow-xl">
                 <Image
                   src="/assets/me.jpg"
                   alt="Profile photo"
@@ -77,11 +77,11 @@ export default function Hero() {
                 Hello, I&#39;m{" "}
                 <span className="text-primary">Nazal Gusti Prastya</span>
               </h1>
-              <h2 className="bg-secondary w-fit pr-3 text-2xl italic font-bold tracking-tighter sm:text-3xl md:text-4xl text-secondary-foreground">
+              <h2 className="bg-secondary text-secondary-foreground w-fit pr-3 text-2xl font-bold tracking-tighter italic sm:text-3xl md:text-4xl">
                 Web Developer
               </h2>
 
-              <p className="max-w-[600px] text-muted-foreground md:text-xl">
+              <p className="text-muted-foreground max-w-[600px] md:text-xl">
                 Hi, I am a web developer who enjoys delivering creative and
                 high-quality digital solutions to meet your business needs.
               </p>
@@ -96,24 +96,24 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 transform"
       >
         <div
-          className="flex flex-col items-center cursor-pointer"
+          className="flex cursor-pointer flex-col items-center"
           onClick={() => {
             document
               .querySelector("#about")
               ?.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          <span className="text-sm text-muted-foreground mb-2">
+          <span className="text-muted-foreground mb-2 text-sm">
             Scroll Down
           </span>
-          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center p-1">
+          <div className="border-primary flex h-10 w-6 justify-center rounded-full border-2 p-1">
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-              className="w-2 h-2 bg-primary rounded-full"
+              className="bg-primary h-2 w-2 rounded-full"
             />
           </div>
         </div>
