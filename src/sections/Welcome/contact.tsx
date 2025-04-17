@@ -28,8 +28,10 @@ import {
 } from "~/features/inbox/form/inbox";
 import { api } from "~/utils/api";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t } = useTranslation();
   const form = useForm<InboxFormSchema>({
     resolver: zodResolver(inboxFormSchema),
   });
@@ -57,10 +59,10 @@ export default function Contact() {
       <div className="mb-12 max-w-md">
         <p className="text-primary flex items-center gap-2 font-medium">
           <Signature className="h-5 w-5" />
-          CONNECT WITH ME
+          {t("contact.span")}
         </p>
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-          Let&apos;s Talk a project together
+          {t("contact.title")}
         </h1>
       </div>
       <div className="flex flex-col gap-12 md:flex-row">
@@ -85,11 +87,7 @@ export default function Contact() {
             </div>
 
             <CardContent>
-              <p className="text-muted-foreground">
-                My inbox is always open, if you have a project to work on
-                together or just to say hello. Feel free to contact me and I
-                will get back to you.
-              </p>
+              <p className="text-muted-foreground">{t("contact.subtitle")}</p>
             </CardContent>
 
             <CardFooter className="flex gap-3">
@@ -137,10 +135,8 @@ export default function Contact() {
         <div className="w-full md:w-2/3">
           <Card>
             <CardHeader>
-              <h2 className="text-2xl font-bold">Send Me a Message</h2>
-              <p className="text-muted-foreground">
-                Fill out the form below to get in touch with me.
-              </p>
+              <h2 className="text-2xl font-bold">{t("contact.send")}</h2>
+              <p className="text-muted-foreground">{t("contact.subSend")}</p>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -179,10 +175,10 @@ export default function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem className="mt-3">
-                      <FormLabel>Pesan</FormLabel>
+                      <FormLabel>{t("contact.message")}</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="tell me about something"
+                          placeholder={t("contact.placeholder")}
                           {...field}
                         />
                       </FormControl>
@@ -197,7 +193,7 @@ export default function Contact() {
                   className="mt-5 w-full"
                   disabled={sendingInboxIsPending}
                 >
-                  Send Message
+                  {t("contact.buttonSend")}
                 </Button>
               </Form>
             </CardContent>

@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "hello": "Hello i'm",
+    "intro": "Hi, I am a web developer who enjoys delivering creative and high-quality digital solutions to meet your business needs.",
+    "location": "Based in Bogor, Indonesia",
+    "scroll": "Scroll Down"
+  },
+  "about": {
+    "title": "About Me",
+    "desc": "Hello, my name is Nazal Gusti Prastya and I reside in Bogor, Indonesia. At 18 years old, I am a student of Information Systems and a web developer. Beyond writing code, I consider myself a creative thinker, adept problem solver, and enthusiastic self-learner passionate about delving into the endless possibilities of technology. My current focus lies in website development utilizing Laravel, React.js, and Next.js. I am keen on exploring opportunities for collaboration. Should you be interested in working together or discussing potential projects, please feel free to reach out to me.",
+    "skills": "Skills & Technologies"
+  },
+  "experience": {
+    "history": "Work History",
+    "title": "Experience",
+    "subtitle": "I have worked in several companies as a professional web developer."
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Explore a Collection of My Varied and Creative Works",
+    "seeMore": "More Projects"
+  },
+  "contact": {
+    "span": "CONNECT WITH ME",
+    "title": "Let's Talk a project together",
+    "subtitle": "My inbox is always open, if you have a project to work on together or just to say hello. Feel free to contact me and I will get back to you.",
+    "send": "Send Me a Message",
+    "subSend": "Fill out the form below to get in touch with me.",
+    "message": "Message",
+    "placeholder": "tell me about something good...",
+    "buttonSend": "Send Message"
+  }
+}

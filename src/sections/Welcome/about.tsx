@@ -2,6 +2,7 @@ import GitHubContributions from "~/components/github/GithubContributions";
 import { Marquee } from "~/components/magicui/marquee";
 import { TechCard } from "~/components/markquee-skills";
 import { Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const techStacks = [
   {
@@ -80,23 +81,16 @@ const firstRow = techStacks.slice(0, techStacks.length / 2);
 const secondRow = techStacks.slice(techStacks.length / 2);
 
 export default function About() {
+  const { t } = useTranslation();
   return (
-    <div className="w-full container">
-      <div className="mb-12 ">
+    <div className="container w-full">
+      <div className="mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          <Sparkles className="inline w-9 h-9  text-primary" />
-          About Me
+          <Sparkles className="text-primary inline h-9 w-9" />
+          {t("about.title")}
         </h1>
-        <p className="mt-5 text-muted-foreground text-justify leading-8 md:text-xl">
-          Hello, my name is Nazal Gusti Prastya and I reside in Bogor,
-          Indonesia. At 18 years old, I am a student of Information Systems and
-          a web developer. Beyond writing code, I consider myself a creative
-          thinker, adept problem solver, and enthusiastic self-learner
-          passionate about delving into the endless possibilities of technology.
-          My current focus lies in website development utilizing Laravel,
-          React.js, and Next.js. I am keen on exploring opportunities for
-          collaboration. Should you be interested in working together or
-          discussing potential projects, please feel free to reach out to me.
+        <p className="text-muted-foreground mt-5 text-justify leading-8 md:text-xl">
+          {t("about.desc")}
         </p>
       </div>
 
@@ -106,7 +100,7 @@ export default function About() {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css"
         />
-        <h2 className="text-2xl font-bold mb-6">Skills & Technologies</h2>
+        <h2 className="mb-6 text-2xl font-bold"> {t("about.skills")}</h2>
         {/* Marquee container with fixed width */}
         <div className="w-full overflow-hidden">
           <div className="max-w-full overflow-hidden">
@@ -118,7 +112,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="w-full overflow-hidden mt-4">
+        <div className="mt-4 w-full overflow-hidden">
           <div className="max-w-full overflow-hidden">
             <Marquee reverse pauseOnHover className="[--duration:20s]">
               {secondRow.map((tech) => (
@@ -129,8 +123,8 @@ export default function About() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-end mt-5 gap-x-3">
-        <div className="w-full md:w-[25%] flex justify-center items-center bg-transparent overflow-hidden">
+      <div className="mt-5 flex flex-col justify-end gap-x-3 md:flex-row">
+        <div className="flex w-full items-center justify-center overflow-hidden bg-transparent md:w-[25%]">
           <iframe
             title="Spotify"
             src="https://open.spotify.com/embed/track/1wo3UYTeizJHkwYIuLuBPF?utm_source=generator&theme=0"

@@ -1,25 +1,12 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "~/components/ui/button";
 import { Github, Instagram, Linkedin, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Creative Developer";
-  const typingSpeed = 150;
-
-  useEffect(() => {
-    if (typedText.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1));
-      }, typingSpeed);
-      return () => clearTimeout(timeout);
-    }
-  }, [typedText]);
+  const { t } = useTranslation();
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center">
@@ -74,19 +61,17 @@ export default function Hero() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Hello, I&#39;m{" "}
-                <span className="text-primary">Nazal Gusti Prastya</span>
+                {t("hero.hello")}
+                <span className="text-primary"> Nazal Gusti Prastya</span>
               </h1>
               <h2 className="bg-secondary text-secondary-foreground w-fit pr-3 text-2xl font-bold tracking-tighter italic sm:text-3xl md:text-4xl">
                 Web Developer
               </h2>
-
               <p className="text-muted-foreground max-w-[600px] md:text-xl">
-                Hi, I am a web developer who enjoys delivering creative and
-                high-quality digital solutions to meet your business needs.
+                {t("hero.intro")}
               </p>
               <span className="inline text-sm">
-                <MapPin className="inline" /> Based in Bogor, Indonesia
+                <MapPin className="inline" /> {t("hero.location")}
               </span>
             </div>
           </div>
@@ -107,7 +92,7 @@ export default function Hero() {
           }}
         >
           <span className="text-muted-foreground mb-2 text-sm">
-            Scroll Down
+            {t("hero.scroll")}
           </span>
           <div className="border-primary flex h-10 w-6 justify-center rounded-full border-2 p-1">
             <motion.div

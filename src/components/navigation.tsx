@@ -15,6 +15,7 @@ import {
   Moon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
@@ -29,7 +30,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
@@ -71,7 +72,6 @@ export default function Navigation() {
           "background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease";
       }
     });
-    
 
     return () => {
       document.documentElement.classList.remove("transition-colors");
@@ -84,7 +84,7 @@ export default function Navigation() {
           (el as HTMLElement).style.transition =
             "background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease";
         });
-      });      
+      });
     };
   }, []);
 
@@ -125,12 +125,25 @@ export default function Navigation() {
 
   if (!mounted) return null;
 
+  const toggleLanguage = async () => {
+    const newLang = i18n.language === "id" ? "en" : "id";
+    await i18n.changeLanguage(newLang);
+  };
+
   return (
     <>
       {/* Mobile Navigation Toggle */}
       <div className="fixed top-4 right-4 z-50 flex gap-2 md:hidden">
         <motion.button
-          className="p-2 rounded-full bg-primary text-primary-foreground"
+          onClick={toggleLanguage}
+          className="bg-primary text-primary-foreground cursor-pointer rounded-full px-4 py-2"
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          {i18n.language === "id" ? "EN" : "ID"}
+        </motion.button>
+        <motion.button
+          className="bg-primary text-primary-foreground rounded-full p-2"
           onClick={toggleTheme}
           aria-label="Toggle theme"
           whileTap={{ scale: 0.9 }}
@@ -139,7 +152,7 @@ export default function Navigation() {
           {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
         </motion.button>
         <motion.button
-          className="p-2 rounded-full bg-primary text-primary-foreground"
+          className="bg-primary text-primary-foreground rounded-full p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
           whileTap={{ scale: 0.9 }}
@@ -151,21 +164,21 @@ export default function Navigation() {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur flex flex-col items-center justify-center space-y-6 text-2xl font-semibold">
+        <div className="bg-background/95 fixed inset-0 z-40 flex flex-col items-center justify-center space-y-6 text-2xl font-semibold backdrop-blur">
           {navItems.map((item) => (
             <motion.button
               key={item.href}
               onClick={() => handleNavClick(item.href)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-lg transition-colors",
+                "flex items-center gap-2 rounded-lg px-4 py-2 transition-colors",
                 activeSection === item.href.replace("#", "")
                   ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-primary"
+                  : "text-muted-foreground hover:text-primary",
               )}
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className="h-5 w-5" />
               {item.name}
             </motion.button>
           ))}
@@ -173,11 +186,11 @@ export default function Navigation() {
       )}
 
       {/* Desktop Navigation */}
-      <nav className="fixed hidden md:flex flex-col items-center justify-between py-8 h-screen w-24 bg-background border-r border-border z-40 transition-all duration-500">
-        <div className="w-full flex justify-center">
+      <nav className="bg-background border-border fixed z-40 hidden h-screen w-24 flex-col items-center justify-between border-r py-8 transition-all duration-500 md:flex">
+        <div className="flex w-full justify-center">
           <motion.button
             onClick={toggleTheme}
-            className="p-3 rounded-full hover:bg-primary/10 text-muted-foreground"
+            className="hover:bg-primary/10 text-muted-foreground rounded-full p-3"
             aria-label="Toggle theme"
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
@@ -191,25 +204,35 @@ export default function Navigation() {
             </motion.div>
           </motion.button>
         </div>
-        <ul className="flex flex-col gap-6 items-center">
+        <ul className="flex flex-col items-center gap-6">
           {navItems.map((item) => (
             <motion.button
               key={item.href}
               onClick={() => handleNavClick(item.href)}
               className={cn(
-                "p-3 rounded-full hover:bg-primary/10 text-muted-foreground transition-colors",
+                "hover:bg-primary/10 text-muted-foreground rounded-full p-3 transition-colors",
                 activeSection === item.href.replace("#", "")
                   ? "bg-primary text-primary-foreground"
-                  : ""
+                  : "",
               )}
               aria-label={item.name}
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className="h-5 w-5" />
             </motion.button>
           ))}
         </ul>
+        <div className="flex p-4">
+          <motion.button
+            onClick={toggleLanguage}
+            className="bg-muted cursor-pointer rounded-full px-4 py-2"
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            {i18n.language === "id" ? "EN" : "ID"}
+          </motion.button>
+        </div>
         <div />
       </nav>
     </>

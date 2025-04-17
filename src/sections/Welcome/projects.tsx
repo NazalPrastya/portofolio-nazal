@@ -5,6 +5,7 @@ import { useRef } from "react";
 import CardProject from "~/components/card-project";
 import { buttonVariants } from "~/components/ui/button";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 interface Project {
   id: number;
@@ -119,6 +120,7 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -141,10 +143,10 @@ export default function Projects() {
       <div className="mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           <Sparkles className="text-primary inline h-9 w-9" />
-          Projects
+          {t("projects.title")}
         </h1>
         <p className="text-muted-foreground mt-4 text-justify text-lg">
-          Explore a Collection of My Varied and Creative Works
+          {t("projects.subtitle")}
         </p>
       </div>
 
@@ -167,7 +169,7 @@ export default function Projects() {
           className={buttonVariants({ variant: "default" })}
           href={"/projects"}
         >
-          More Project
+          {t("projects.seeMore")}
         </Link>
       </div>
     </div>

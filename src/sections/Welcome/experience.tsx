@@ -1,7 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Experience() {
+  const { t } = useTranslation();
   return (
     <div className="container w-full">
       <div className="flex flex-col gap-8 md:flex-row">
@@ -9,13 +11,13 @@ export default function Experience() {
         <div className="w-full space-y-4 md:w-1/3">
           <p className="text-primary flex items-center gap-2 font-medium">
             <Sparkles className="h-5 w-5" />
-            WORK HISTORY
+            {t("experience.history")}
           </p>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Experience
+            {t("experience.title")}
           </h1>
           <p className="text-muted-foreground text-justify text-lg">
-            I have worked in several companies as a professional web developer.
+            {t("experience.subtitle")}
           </p>
         </div>
 
