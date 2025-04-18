@@ -1,7 +1,7 @@
 "use client";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CardProject from "~/components/card-project";
 import { ArrowBigLeft } from "lucide-react";
 import Link from "next/link";
@@ -168,6 +168,18 @@ export default function ListProject() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+  // Add mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   return (
     <div className="container w-full">
       <Link
@@ -187,19 +199,29 @@ export default function ListProject() {
       </div>
 
       {/* Projects */}
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <motion.div key={project.id} variants={itemVariants}>
-            <CardProject project={project} />
-          </motion.div>
-        ))}
-      </motion.div>
+      {isMobile ? (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <div key={project.id}>
+              <CardProject project={project} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={itemVariants}>
+              <CardProject project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
     </div>
   );
 }
