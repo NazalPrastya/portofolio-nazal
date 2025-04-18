@@ -1,3 +1,4 @@
+"use client";
 import ChatBot from "~/components/chat-bot";
 import { HeadMetaData } from "~/components/layout/HeadMetaData";
 import Navigation from "~/components/navigation";

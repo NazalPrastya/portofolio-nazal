@@ -140,7 +140,7 @@ export default function Navigation() {
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: 1.1 }}
         >
-          {i18n.language === "id" ? "EN" : "ID"}
+          {i18n.language === "id" ? "ID" : "EN"}
         </motion.button>
         <motion.button
           className="bg-primary text-primary-foreground rounded-full p-2"
@@ -230,7 +230,7 @@ export default function Navigation() {
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >
-            {i18n.language === "id" ? "EN" : "ID"}
+            {i18n.language === "id" ? "ID" : "EN"}
           </motion.button>
         </div>
         <div />

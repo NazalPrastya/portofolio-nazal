@@ -1,12 +1,13 @@
 "use client";
 import { Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import CardProject from "~/components/card-project";
 import { buttonVariants } from "~/components/ui/button";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
+// Project data stays the same...
 interface Project {
   id: number;
   title: string;
@@ -124,6 +125,13 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  // Add client-side only state
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -138,38 +146,67 @@ export default function Projects() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+
+  // Create fallback text - should match what your translation keys would render
+  const titleFallback = "My Projects";
+  const subtitleFallback = "Here are some projects I've worked on.";
+  const seeMoreFallback = "See More";
+
+  // Add mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Check if on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   return (
     <div className="container w-full">
       <div className="mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           <Sparkles className="text-primary inline h-9 w-9" />
-          {t("projects.title")}
+          {isClient ? t("projects.title") : titleFallback}
         </h1>
         <p className="text-muted-foreground mt-4 text-justify text-lg">
-          {t("projects.subtitle")}
+          {isClient ? t("projects.subtitle") : subtitleFallback}
         </p>
       </div>
 
-      {/* Projects */}
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <motion.div key={project.id} variants={itemVariants}>
-            <CardProject project={project} />
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Projects with animations that only run on client */}
+      {isMobile ? (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <div key={project.id}>
+              <CardProject project={project} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isClient ? (isInView ? "visible" : "hidden") : "hidden"}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={itemVariants}>
+              <CardProject project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
       <div className="mt-5 flex w-full justify-center">
         <Link
           className={buttonVariants({ variant: "default" })}
           href={"/projects"}
         >
-          {t("projects.seeMore")}
+          {isClient ? t("projects.seeMore") : seeMoreFallback}
         </Link>
       </div>
     </div>
