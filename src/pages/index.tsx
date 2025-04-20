@@ -2,6 +2,7 @@
 import ChatBot from "~/components/chat-bot";
 import { HeadMetaData } from "~/components/layout/HeadMetaData";
 import Navigation from "~/components/navigation";
+import Footer from "~/sections/footer";
 import About from "~/sections/Welcome/about";
 import Contact from "~/sections/Welcome/contact";
 import Experience from "~/sections/Welcome/experience";
@@ -44,6 +45,7 @@ export default function Home() {
           <ChatBot />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

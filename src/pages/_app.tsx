@@ -53,7 +53,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
             <div className="relative z-10">
               {getLayout(<Component {...pageProps} />)}
-              <Footer />
             </div>
 
             <Toaster position="top-right" />
