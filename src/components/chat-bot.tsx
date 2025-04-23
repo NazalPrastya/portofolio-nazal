@@ -109,7 +109,7 @@ export default function ChatBot() {
             : "pointer-events-none scale-95 opacity-0",
         )}
       >
-        <Card className="border-2 shadow-lg">
+        <Card className="max-h-80 border-2 shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4">
             <CardTitle className="text-md flex items-center gap-2 font-medium">
               <Bot className="h-5 w-5" />
