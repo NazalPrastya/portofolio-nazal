@@ -16,31 +16,45 @@ interface Project {
   tags: string[];
   category: string;
   demoLink: string;
-  githubLink: string;
+  githubLink: string[];
 }
 
 const projects: Project[] = [
   {
+    id: 9,
+    title: "AI Summary Budget Tracker",
+    description:
+      "An application for recording income and expenditure budgets with summaries compiled using AI implementation",
+    image: "/assets/porto/budget-tracker.png",
+    tags: ["NextJS", "MySQL", "ExpressJS", "OpenRouter"],
+    category: "AI Implement",
+    demoLink: "#",
+    githubLink: [
+      "https://github.com/NazalPrastya/fe-budget-tracker",
+      "https://github.com/NazalPrastya/be_budget_tracker",
+    ],
+  },
+  {
     id: 7,
     title: "Pelaporan dan Demografi Desa",
     description:
-      "Aplikasi berbasis web yang digunakan untuk melakukan laporan dan menampilkan demografi desa.",
+      "A web-based application used to generate reports and display village demographics.",
     image: "/assets/porto/pelaporan.png",
     tags: ["Laravel", "ReactJS", "MySQL", "MUI", "WebSocket"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 8,
     title: "Ticketing System",
     description:
-      "Laporan keamanan siber untuk mengatasi ancaman dan kemanan siber berbasis web",
+      "Cyber security report to address web-based cyber threats and security",
     image: "/assets/porto/ticketing.png",
     tags: ["Laravel", "MySQL"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 1,
@@ -51,7 +65,7 @@ const projects: Project[] = [
     tags: ["Laravel", "ReactJS", "MySQL", "MaterialTailwind"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 2,
@@ -62,7 +76,7 @@ const projects: Project[] = [
     tags: ["Laravel", "ReactJS", "MySQL", "MaterialTailwind"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 3,
@@ -73,18 +87,7 @@ const projects: Project[] = [
     tags: ["Laravel", "Midtrans", "MySQL", "TailwindCSS"],
     category: "Government",
     demoLink: "#",
-    githubLink: "https://github.com/NazalPrastya/sistem-kantin",
-  },
-  {
-    id: 4,
-    title: "Goods and Services Monitoring System",
-    description:
-      "The monitoring system is built using a dashboard with statistics that are easy to read by users in determining targets.",
-    image: "/assets/porto/simonberjasa.png",
-    category: "Government",
-    tags: ["ReactJS", "Laravel", "MaterialUI", "MySQL"],
-    demoLink: "#",
-    githubLink: "#",
+    githubLink: ["https://github.com/NazalPrastya/sistem-kantin"],
   },
   {
     id: 5,
@@ -95,7 +98,7 @@ const projects: Project[] = [
     category: "Government",
     tags: ["ReactJS", "Laravel", "MaterialUI", "MySQL"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 6,
@@ -106,7 +109,7 @@ const projects: Project[] = [
     category: "Government",
     tags: ["Laravel", "MySQL", "TailwindCSS"],
     demoLink: "#",
-    githubLink: "https://github.com/NazalPrastya/zapeosethero",
+    githubLink: ["https://github.com/NazalPrastya/zapeosethero"],
   },
   {
     id: 9,
@@ -116,7 +119,7 @@ const projects: Project[] = [
     category: "Fun",
     tags: ["ReactJS", "Firebase"],
     demoLink: "https://najal-games.vercel.app",
-    githubLink: "https://github.com/NazalPrastya/kalkulator-cinta",
+    githubLink: ["https://github.com/NazalPrastya/kalkulator-cinta"],
   },
 ];
 
@@ -147,17 +150,14 @@ export default function Projects() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  // Create fallback text - should match what your translation keys would render
   const titleFallback = "My Projects";
   const subtitleFallback = "Here are some projects I've worked on.";
   const seeMoreFallback = "See More";
 
-  // Add mobile detection
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    // Check if on mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -177,7 +177,6 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Projects with animations that only run on client */}
       {isMobile ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (

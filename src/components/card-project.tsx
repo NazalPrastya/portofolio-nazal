@@ -12,7 +12,7 @@ interface Project {
   tags: string[];
   category: string;
   demoLink: string;
-  githubLink: string;
+  githubLink: string[];
 }
 
 const CardProject = ({ project }: { project: Project }) => {
@@ -85,14 +85,26 @@ const CardProject = ({ project }: { project: Project }) => {
               Demo
             </a>
           )}
-          {project.githubLink !== "#" && (
-            <a
-              href={project.githubLink}
-              className="flex-1 rounded border border-gray-300 py-1.5 text-center text-sm font-medium text-gray-700 transition-colors duration-300 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
-            >
-              GitHub
-            </a>
-          )}
+          {project.githubLink &&
+            Array.isArray(project.githubLink) &&
+            project.githubLink.map(
+              (link, index) =>
+                link !== "#" && (
+                  <a
+                    key={index}
+                    href={link}
+                    className="flex-1 rounded border border-gray-300 py-1.5 text-center text-sm font-medium text-gray-700 transition-colors duration-300 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.githubLink.length === 1
+                      ? "GitHub"
+                      : index === 0
+                        ? "GitHub (Frontend)"
+                        : "GitHub (Backend)"}
+                  </a>
+                ),
+            )}
         </div>
       </div>
     </motion.div>

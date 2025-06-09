@@ -6,9 +6,9 @@ export const createExperienceFormSchema = z.object({
   logo: imageSchema,
   desc: z.string({ message: "Description required" }),
   position: z.string({ message: "Position required" }),
-  dateStart: z.string({ message: "Start date required" }).date(),
-  dateEnd: z.string().date().optional(),
-  now: z.boolean(),
+  dateStart: z.date({ message: "Start date required" }),
+  dateEnd: z.date().optional(),
+  now: z.boolean().optional(),
 });
 
 export type CreateExperienceFormSchema = z.infer<

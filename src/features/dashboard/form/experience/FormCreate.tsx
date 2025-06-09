@@ -24,33 +24,25 @@ import {
 } from "./experience";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { api } from "~/utils/api";
+import { toast } from "sonner";
 
 export function FormCreate() {
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
 
   const form = useForm<CreateExperienceFormSchema>({
     resolver: zodResolver(createExperienceFormSchema),
-    defaultValues: {
-      company: "",
-      position: "",
-      desc: "",
-      dateStart: "",
-      dateEnd: "",
-      logo: undefined,
-    },
   });
 
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Mengubah file menjadi URL yang bisa ditampilkan
       const fileUrl = URL.createObjectURL(file);
       setLogoPreview(fileUrl);
       form.setValue("logo", file);
     }
   };
 
-  // Cleanup URL objects when component unmounts
   useEffect(() => {
     return () => {
       if (logoPreview) {
@@ -59,36 +51,24 @@ export function FormCreate() {
     };
   }, [logoPreview]);
 
+  const { mutate: addExperience, isPending: isPendingAddExperience } =
+    api.experience.create.useMutation({
+      onSuccess: () => {
+        toast("Experience created successfully");
+        form.reset();
+      },
+      onError: () => {
+        toast.error("Failed to create experience");
+      },
+    });
+
+  // const onError = (errors: any) => {
+  //   console.log("Form validation errors:", errors);
+  // };
   const handleExperienceSubmit = (values: CreateExperienceFormSchema) => {
-    // Sekarang values.logo berisi File object yang bisa diproses
     console.log("Form submitted with values:", values);
-
-    const payload: {
-      company: string;
-      position: string;
-      desc: string;
-      dateStart: string;
-      dateEnd?: string;
-      logo?: File;
-    } = {
-      company: values.company,
-      position: values.position,
-      desc: values.desc,
-      dateStart: values.dateStart,
-    };
-
-    if (values.dateEnd) {
-      payload.dateEnd = values.dateEnd;
-    }
-
-    if (values.logo instanceof File) {
-      payload.logo = values.logo;
-    }
-
-    // Lakukan proses submit ke API disini
-    // misalnya: updateProfile.mutate(payload);
+    addExperience(values);
   };
-
   return (
     <Dialog>
       <DialogTrigger asChild>

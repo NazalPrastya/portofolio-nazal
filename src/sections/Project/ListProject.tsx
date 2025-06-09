@@ -15,10 +15,24 @@ interface Project {
   tags: string[];
   category: string;
   demoLink: string;
-  githubLink: string;
+  githubLink: string[];
 }
 
 const projects: Project[] = [
+  {
+    id: 9,
+    title: "AI Summary Budget Tracker",
+    description:
+      "An application for recording income and expenditure budgets with summaries compiled using AI implementation",
+    image: "/assets/porto/budget-tracker.png",
+    tags: ["NextJS", "MySQL", "ExpressJS", "OpenRouter"],
+    category: "AI Implement",
+    demoLink: "#",
+    githubLink: [
+      "https://github.com/NazalPrastya/fe-budget-tracker",
+      "https://github.com/NazalPrastya/be_budget_tracker",
+    ],
+  },
   {
     id: 7,
     title: "Pelaporan dan Demografi Desa",
@@ -28,7 +42,7 @@ const projects: Project[] = [
     tags: ["Laravel", "ReactJS", "MySQL", "MUI", "WebSocket"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 8,
@@ -39,7 +53,7 @@ const projects: Project[] = [
     tags: ["Laravel", "MySQL"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 1,
@@ -50,7 +64,7 @@ const projects: Project[] = [
     tags: ["Laravel", "ReactJS", "MySQL", "MaterialTailwind"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 2,
@@ -61,7 +75,7 @@ const projects: Project[] = [
     tags: ["Laravel", "ReactJS", "MySQL", "MaterialTailwind"],
     category: "Government",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 3,
@@ -72,7 +86,7 @@ const projects: Project[] = [
     tags: ["Laravel", "Midtrans", "MySQL", "TailwindCSS"],
     category: "Government",
     demoLink: "#",
-    githubLink: "https://github.com/NazalPrastya/sistem-kantin",
+    githubLink: ["https://github.com/NazalPrastya/sistem-kantin"],
   },
   {
     id: 4,
@@ -83,7 +97,7 @@ const projects: Project[] = [
     category: "Government",
     tags: ["ReactJS", "Laravel", "MaterialUI", "MySQL"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 5,
@@ -94,7 +108,7 @@ const projects: Project[] = [
     category: "Government",
     tags: ["ReactJS", "Laravel", "MaterialUI", "MySQL"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 6,
@@ -105,7 +119,18 @@ const projects: Project[] = [
     category: "Government",
     tags: ["Laravel", "MySQL", "TailwindCSS"],
     demoLink: "#",
-    githubLink: "https://github.com/NazalPrastya/zapeosethero",
+    githubLink: ["https://github.com/NazalPrastya/zapeosethero"],
+  },
+  {
+    id: 13,
+    title: "Landing Page Voice Over Talent v2",
+    description:
+      "A simple landing page to showcase the voice over talent's profile, voice demo, and contact form. Designed to be responsive and easy to use to attract potential clients.",
+    image: "/assets/porto/vo-talent-v2.png",
+    tags: ["ReactJS", "TailwindCSS"],
+    category: "AI Implement",
+    demoLink: "https://www.utamisundari.com/",
+    githubLink: [],
   },
   {
     id: 9,
@@ -115,7 +140,7 @@ const projects: Project[] = [
     category: "Fun",
     tags: ["ReactJS", "Firebase"],
     demoLink: "https://najal-games.vercel.app",
-    githubLink: "https://github.com/NazalPrastya/kalkulator-cinta",
+    githubLink: ["https://github.com/NazalPrastya/kalkulator-cinta"],
   },
   {
     id: 10,
@@ -125,7 +150,7 @@ const projects: Project[] = [
     category: "Fun",
     tags: ["Laravel", "MySQL", "TailwindCSS"],
     demoLink: "#",
-    githubLink: "https://github.com/NazalPrastya/sistem-sibt.git",
+    githubLink: ["https://github.com/NazalPrastya/sistem-sibt.git"],
   },
   {
     id: 11,
@@ -136,7 +161,7 @@ const projects: Project[] = [
     category: "Landing Page",
     tags: ["TailwindCSS"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: [],
   },
   {
     id: 12,
@@ -146,7 +171,7 @@ const projects: Project[] = [
     category: "learing-projects",
     tags: ["ReactJS", "TailwindCSS", "API"],
     demoLink: "https://movie-list-zal.vercel.app/",
-    githubLink: "https://github.com/NazalPrastya/movie-list",
+    githubLink: ["https://github.com/NazalPrastya/movie-list"],
   },
 ];
 
