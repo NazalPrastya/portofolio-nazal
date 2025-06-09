@@ -67,7 +67,7 @@ export function FormCreate() {
   // };
   const handleExperienceSubmit = (values: CreateExperienceFormSchema) => {
     console.log("Form submitted with values:", values);
-    addExperience(values);
+    // addExperience(values);
   };
   return (
     <Dialog>
@@ -153,7 +153,7 @@ export function FormCreate() {
                 <FormItem>
                   <FormLabel>Date Start*</FormLabel>
                   <FormControl>
-                    <Input type="date" {...field} />
+                    {/* <Input type="date" {...field} /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -166,7 +166,7 @@ export function FormCreate() {
                 <FormItem>
                   <FormLabel>Date End</FormLabel>
                   <FormControl>
-                    <Input type="date" {...field} />
+                    {/* <Input type="date" {...field} /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
