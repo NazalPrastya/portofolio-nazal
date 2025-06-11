@@ -76,6 +76,11 @@ const techStacks = [
     icon: "devicon-vitejs-plain",
     color: "text-yellow-700",
   },
+  {
+    name: "ExpressJS",
+    icon: "devicon-express-plain",
+    color: "text-yellow-500",
+  },
 ];
 
 const firstRow = techStacks.slice(0, techStacks.length / 2);
