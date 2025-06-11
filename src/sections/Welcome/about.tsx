@@ -78,7 +78,7 @@ const techStacks = [
   },
   {
     name: "ExpressJS",
-    icon: "devicon-express-plain",
+    icon: "devicon-express-original",
     color: "text-yellow-500",
   },
 ];
