@@ -27,8 +27,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { api } from "~/utils/api";
 import { toast } from "sonner";
 
-export function FormCreate() {
+export function FormCreate({ onSuccess }: { onSuccess?: () => void }) {
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm<CreateExperienceFormSchema>({
     resolver: zodResolver(createExperienceFormSchema),
@@ -39,7 +40,19 @@ export function FormCreate() {
     if (file) {
       const fileUrl = URL.createObjectURL(file);
       setLogoPreview(fileUrl);
-      form.setValue("logo", file);
+
+      // Convert file to base64
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = (reader.result as string).split(",")[1];
+        form.setValue("logo", {
+          name: file.name,
+          type: file.type,
+          size: file.size,
+          base64: base64,
+        });
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -54,23 +67,29 @@ export function FormCreate() {
   const { mutate: addExperience, isPending: isPendingAddExperience } =
     api.experience.create.useMutation({
       onSuccess: () => {
-        toast("Experience created successfully");
+        toast.success("Experience created successfully");
         form.reset();
+        setLogoPreview(null);
+        setIsOpen(false);
+        onSuccess?.();
       },
-      onError: () => {
-        toast.error("Failed to create experience");
+      onError: (error) => {
+        toast.error(error.message || "Failed to create experience");
       },
     });
 
-  // const onError = (errors: any) => {
-  //   console.log("Form validation errors:", errors);
-  // };
   const handleExperienceSubmit = (values: CreateExperienceFormSchema) => {
-    console.log("Form submitted with values:", values);
-    // addExperience(values);
+    addExperience({
+      ...values,
+      dateStart: values.dateStart.toISOString().split("T")[0] ?? "",
+      dateEnd: values.dateEnd
+        ? values.dateEnd.toISOString().split("T")[0]
+        : undefined,
+      now: values.now ?? false,
+    });
   };
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="cursor-pointer">Create Experience</Button>
       </DialogTrigger>
@@ -153,7 +172,16 @@ export function FormCreate() {
                 <FormItem>
                   <FormLabel>Date Start*</FormLabel>
                   <FormControl>
-                    {/* <Input type="date" {...field} /> */}
+                    <Input
+                      type="date"
+                      {...field}
+                      value={
+                        field.value
+                          ? new Date(field.value).toISOString().split("T")[0]
+                          : ""
+                      }
+                      onChange={(e) => field.onChange(new Date(e.target.value))}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -161,19 +189,54 @@ export function FormCreate() {
             />
             <FormField
               control={form.control}
-              name="dateEnd"
+              name="now"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Date End</FormLabel>
+                <FormItem className="flex items-center gap-2">
                   <FormControl>
-                    {/* <Input type="date" {...field} /> */}
+                    <input
+                      type="checkbox"
+                      checked={field.value}
+                      onChange={(e) => field.onChange(e.target.checked)}
+                      className="h-4 w-4"
+                    />
                   </FormControl>
+                  <FormLabel className="!mt-0">
+                    Currently working here
+                  </FormLabel>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            {!form.watch("now") && (
+              <FormField
+                control={form.control}
+                name="dateEnd"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Date End</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="date"
+                        {...field}
+                        value={
+                          field.value
+                            ? new Date(field.value).toISOString().split("T")[0]
+                            : ""
+                        }
+                        onChange={(e) =>
+                          field.onChange(new Date(e.target.value))
+                        }
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" disabled={isPendingAddExperience}>
+                {isPendingAddExperience ? "Saving..." : "Save changes"}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

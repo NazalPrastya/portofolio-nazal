@@ -6,8 +6,11 @@ import { supabaseAdminClient } from "~/lib/supabase/server";
 
 export const experienceRouter = createTRPCRouter({
   getList: privateProcedure.query(async ({ ctx }) => {
-    const result = await ctx.db.$queryRaw`SELECT * FROM "Experience"`;
-    return result;
+    return await ctx.db.experience.findMany({
+      orderBy: {
+        dateStart: "desc",
+      },
+    });
   }),
 
   create: privateProcedure
@@ -17,8 +20,8 @@ export const experienceRouter = createTRPCRouter({
         logo: imageSchema,
         desc: z.string({ message: "Description required" }),
         position: z.string({ message: "Position required" }),
-        dateStart: z.string({ message: "Start date required" }).date(),
-        dateEnd: z.date().optional(),
+        dateStart: z.string({ message: "Start date required" }),
+        dateEnd: z.string().optional(),
         now: z.boolean(),
       }),
     )
@@ -28,13 +31,13 @@ export const experienceRouter = createTRPCRouter({
         const { name, type, base64 } = input.logo;
         const buffer = Buffer.from(base64, "base64");
         const fileExt = name.split(".").pop();
+        const uniqueName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
 
-        const fileName = `${fileExt}`;
         const { error } = await supabaseAdminClient.storage
           .from(SUPABASE_BUCKET.ExperienceImage)
-          .upload(fileName, buffer, {
+          .upload(uniqueName, buffer, {
             contentType: type,
-            upsert: true,
+            upsert: false,
           });
 
         if (error) {
@@ -43,20 +46,96 @@ export const experienceRouter = createTRPCRouter({
 
         const { data } = supabaseAdminClient.storage
           .from(SUPABASE_BUCKET.ExperienceImage)
-          .getPublicUrl(fileName);
+          .getPublicUrl(uniqueName);
 
         logoUrl = data.publicUrl;
       }
-      return ctx.db.experience.create({
-        data: {
-          company: input.company,
-          logo: logoUrl,
-          desc: input.desc ?? "",
-          position: input.position,
-          dateStart: input.dateStart,
-          dateEnd: input.dateEnd,
-          now: input.now,
-        },
+
+      try {
+        return await ctx.db.experience.create({
+          data: {
+            company: { en: input.company, id: input.company },
+            logo: logoUrl,
+            desc: { en: input.desc, id: input.desc },
+            position: input.position,
+            dateStart: new Date(input.dateStart),
+            dateEnd: input.dateEnd ? new Date(input.dateEnd) : null,
+            now: input.now,
+          },
+        });
+      } catch (error) {
+        console.error("Error creating experience:", error);
+        throw new Error(
+          `Failed to create experience: ${error instanceof Error ? error.message : "Unknown error"}`,
+        );
+      }
+    }),
+
+  update: privateProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        company: z.string({ message: "Company name required" }),
+        logo: imageSchema,
+        desc: z.string({ message: "Description required" }),
+        position: z.string({ message: "Position required" }),
+        dateStart: z.string({ message: "Start date required" }),
+        dateEnd: z.string().optional(),
+        now: z.boolean(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      let logoUrl: string | undefined = undefined;
+      if (input.logo) {
+        const { name, type, base64 } = input.logo;
+        const buffer = Buffer.from(base64, "base64");
+        const fileExt = name.split(".").pop();
+        const uniqueName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+        const { error } = await supabaseAdminClient.storage
+          .from(SUPABASE_BUCKET.ExperienceImage)
+          .upload(uniqueName, buffer, {
+            contentType: type,
+            upsert: false,
+          });
+
+        if (error) {
+          throw new Error(`Failed to upload image: ${error.message}`);
+        }
+
+        const { data } = supabaseAdminClient.storage
+          .from(SUPABASE_BUCKET.ExperienceImage)
+          .getPublicUrl(uniqueName);
+
+        logoUrl = data.publicUrl;
+      }
+
+      try {
+        return await ctx.db.experience.update({
+          where: { id: input.id },
+          data: {
+            company: { en: input.company, id: input.company },
+            logo: logoUrl,
+            desc: { en: input.desc, id: input.desc },
+            position: input.position,
+            dateStart: new Date(input.dateStart),
+            dateEnd: input.dateEnd ? new Date(input.dateEnd) : null,
+            now: input.now,
+          },
+        });
+      } catch (error) {
+        console.error("Error updating experience:", error);
+        throw new Error(
+          `Failed to update experience: ${error instanceof Error ? error.message : "Unknown error"}`,
+        );
+      }
+    }),
+
+  delete: privateProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.experience.delete({
+        where: { id: input.id },
       });
     }),
 });

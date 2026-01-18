@@ -7,7 +7,7 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-    transpilePackages: ['next-auth'],
+  transpilePackages: ["next-auth"],
   /**
    * If you are using `appDir` then you must comment the below `i18n` config out.
    *
@@ -16,6 +16,16 @@ const config = {
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "jbrgikymjvdsavunxsix.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
   },
 };
 
