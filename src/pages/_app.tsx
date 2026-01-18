@@ -9,7 +9,6 @@ import "~/styles/globals.css";
 import { GridPattern } from "~/components/magicui/grid-pattern";
 import { ThemeProvider } from "~/components/theme-provider";
 import { cn } from "~/lib/utils";
-import Footer from "~/sections/footer";
 import { Toaster } from "~/components/ui/sonner";
 import { type ComponentType, type ReactElement } from "react";
 import { I18nextProvider } from "react-i18next";

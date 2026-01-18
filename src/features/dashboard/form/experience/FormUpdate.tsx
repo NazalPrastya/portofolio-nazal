@@ -26,8 +26,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { api } from "~/utils/api";
 import { toast } from "sonner";
 
+interface Experience {
+  id: string;
+  company: { en: string; id: string } | string;
+  desc: { en: string; id: string } | string;
+  position: string;
+  dateStart: string;
+  dateEnd?: string;
+  now: boolean;
+  logo?: string | null;
+}
+
 interface FormUpdateProps {
-  experience: any;
+  experience: Experience;
   open: boolean;
   onClose: () => void;
   onSuccess?: () => void;
@@ -64,7 +75,7 @@ export function FormUpdate({
         dateEnd: experience.dateEnd ? new Date(experience.dateEnd) : undefined,
         now: experience.now,
       });
-      setLogoPreview(experience.logo);
+      setLogoPreview(experience.logo ?? null);
     }
   }, [experience, form]);
 
@@ -91,7 +102,7 @@ export function FormUpdate({
 
   useEffect(() => {
     return () => {
-      if (logoPreview && logoPreview.startsWith("blob:")) {
+      if (logoPreview?.startsWith("blob:")) {
         URL.revokeObjectURL(logoPreview);
       }
     };

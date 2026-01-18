@@ -24,14 +24,29 @@ import { FormCreate } from "../form/experience/FormCreate";
 import { FormUpdate } from "../form/experience/FormUpdate";
 import { toast } from "sonner";
 
+interface Experience {
+  id: string;
+  company: { en: string; id: string } | string;
+  desc: { en: string; id: string } | string;
+  position: string;
+  dateStart: string;
+  dateEnd?: string;
+  now: boolean;
+  logo?: string | null;
+}
+
 export default function ExperiencePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedExperience, setSelectedExperience] = useState<any>(null);
+  const [selectedExperience, setSelectedExperience] =
+    useState<Experience | null>(null);
   const itemsPerPage = 5;
 
   const { data: experiences = [], refetch } =
-    api.experience.getList.useQuery() as { data: any[]; refetch: () => void };
+    api.experience.getList.useQuery() as {
+      data: Experience[];
+      refetch: () => void;
+    };
   const { mutate: deleteExperience } = api.experience.delete.useMutation({
     onSuccess: () => {
       toast.success("Experience deleted successfully");
@@ -43,7 +58,7 @@ export default function ExperiencePage() {
   });
 
   const filteredExperiences = useMemo(() => {
-    return experiences.filter((exp: any) => {
+    return experiences.filter((exp: Experience) => {
       const companyName =
         typeof exp.company === "object"
           ? exp.company.en || exp.company.id
@@ -96,7 +111,7 @@ export default function ExperiencePage() {
           </TableHeader>
           <TableBody>
             {paginatedExperiences.length > 0 ? (
-              paginatedExperiences.map((experience: any) => {
+              paginatedExperiences.map((experience: Experience) => {
                 const companyName =
                   typeof experience.company === "object"
                     ? experience.company.en || experience.company.id
@@ -113,10 +128,12 @@ export default function ExperiencePage() {
                 });
                 const dateEnd = experience.now
                   ? "Present"
-                  : new Date(experience.dateEnd).toLocaleDateString("en-US", {
-                      month: "short",
-                      year: "numeric",
-                    });
+                  : experience.dateEnd
+                    ? new Date(experience.dateEnd).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                      })
+                    : "N/A";
 
                 return (
                   <TableRow key={experience.id}>
